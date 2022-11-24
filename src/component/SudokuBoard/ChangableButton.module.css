@@ -1,0 +1,13 @@
+.changable {
+  color: #279b9b;
+}
+
+.changable:hover {
+  background-color: rgba(0, 140, 255, 0.39);
+  cursor: pointer;
+}
+
+button.selected {
+  background-color: #279b9b;
+  color: rgba(0, 140, 255, 0.39);
+}

@@ -1,0 +1,11 @@
+.title {
+  width:100%;
+  text-align: center;
+  margin: 50px 0 50px 0;
+  font-weight: bold;
+}
+.title div {
+  width: 90%;
+  margin: auto;
+  border-bottom: 2px solid #c41374 ;
+}

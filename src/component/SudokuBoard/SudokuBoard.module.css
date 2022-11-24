@@ -1,0 +1,111 @@
+.container {
+  margin: auto;
+  width: 90%;
+}
+
+.container * {
+  font-size: 19px;
+}
+
+.sudokuBoard {
+  margin: auto;
+  margin-bottom: 50px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  column-gap: 1px;
+  row-gap: 1px;
+}
+
+.sudokuBoard > button {
+  background-color: #fff;
+  border: solid 2px #d1d0d0;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.sudokuBoard .fixed {
+  background-color: #fff;
+  color: #000;
+}
+
+.buttonGroup {
+  margin: auto;
+  padding-top: 20px;
+  border-top: solid 2px #c41374;
+  width: 100%;
+  text-align: center;
+}
+
+.buttonGroup button {
+  width: 100px;
+  height: 50px;
+  color: #fff;
+  font-size: 19px;
+  background-color: #279b9b;
+  border: solid 1px;
+  border-radius: 5px;
+}
+
+.keypadSection {
+  position: fixed;
+  padding-top: 10px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #c41374;
+  color: white;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+}
+
+.head > * {
+  flex: 1 1 auto;
+}
+
+.keypadSection .close {
+  align-items: flex-end;
+  width: 30px;
+  height: 30px;
+  border: solid 2px #fff;
+  border-radius: 15px;
+  background-color: #c41374;
+  color: white;
+}
+
+.keypad {
+  width: 95%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  column-gap: 5px;
+  row-gap: 5px;
+}
+
+.keypad button {
+  aspect-ratio: 1 / 1;
+  border-radius: 5px;
+  border: solid 3px #fff;
+  background-color: #c41374;
+  color: white;
+}
+
+.keypad button:hover {
+  background-color: #fff;
+  color: #c41374;
+}
+
+@media (max-width: 600px) {
+  .keypad {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
