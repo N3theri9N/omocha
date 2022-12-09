@@ -7,7 +7,9 @@
   cursor: pointer;
 }
 
-button.selected {
-  background-color: #279b9b;
-  color: rgba(0, 140, 255, 0.39);
+.changable.selected {
+  background-color: rgba(0, 140, 255, 0.39); 
+  color: rgb(0, 140, 255);
 }
+
+
