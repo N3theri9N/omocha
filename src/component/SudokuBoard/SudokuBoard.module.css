@@ -63,3 +63,10 @@
   border: solid 1px;
   border-radius: 5px;
 }
+
+
+@media (min-width: 600px) {
+  .sudokuBoard  {
+    max-width: 600px;
+  }
+}

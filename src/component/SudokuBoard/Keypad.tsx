@@ -11,6 +11,9 @@ const Keypad: React.FC<{
     <div className={classes.keypadSection}>
       <div className={classes.head}>
         <div>
+          
+        </div>
+        <div>
           SELECT NUMBER OF ROW {row} , COL {col}
         </div>
         <div>

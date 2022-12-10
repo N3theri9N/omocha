@@ -55,5 +55,14 @@
   .keypad {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 1fr);
+    max-height: 120px;
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 600px) {
+  .keypad {
+    max-height: 120px;
+    max-width: 600px;
   }
 }
