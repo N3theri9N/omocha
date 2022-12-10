@@ -6,7 +6,7 @@ import classes from "./SudokuBoard.module.css";
 import ChangableButton from "./ChagableButton";
 import Keypad from "./Keypad";
 
-const SudokuBoard: React.FC = () => {
+const SudokuBoard: React.FC<{question:String}> = ({ question }) => {
   // const { isLoading, data: queryData }: any = useQuery<Group[], Error>({
   //   queryKey: ["sudokuQuestion"],
   //   queryFn: () =>
@@ -16,17 +16,7 @@ const SudokuBoard: React.FC = () => {
 
   // });
 
-  const INITIAL_PUZZLE_DATA: number[] = 
-  `0,6,0,3,0,0,8,0,4,
-  5,3,7,0,9,0,0,0,0,
-  0,4,0,0,0,6,3,0,7,
-  0,9,0,0,5,1,2,3,8,
-  0,0,0,0,0,0,0,0,0,
-  7,1,3,6,2,0,0,4,0,
-  3,0,6,4,0,0,0,1,0,
-  0,0,0,0,6,0,5,2,3,
-  1,0,2,0,0,9,0,8,0`
-    .split(",")
+  const INITIAL_PUZZLE_DATA: number[] = question.split(",")
     .map((n: string) => parseInt(n));
 
   const [selButtonIdx, setSelButtonIdx] = useState<number>(-1);

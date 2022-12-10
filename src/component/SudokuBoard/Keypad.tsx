@@ -1,3 +1,4 @@
+import Image from "next/image";
 import classes from "./Keypad.module.css";
 
 const Keypad: React.FC<{
@@ -23,7 +24,7 @@ const Keypad: React.FC<{
             }}
             className={classes.close}
           >
-            X
+            <Image width={100} height={100} alt="X" src="/svg/circlex.svg" />
           </button>
         </div>
       </div>
@@ -38,7 +39,7 @@ const Keypad: React.FC<{
         <button onClick={() => changePuzzleData(selButtonIdx, 8)}>8</button>
         <button onClick={() => changePuzzleData(selButtonIdx, 9)}>9</button>
         <button onClick={() => changePuzzleData(selButtonIdx, 0)}>
-          <img src="svg/eraser.svg" />
+          <Image width={30} height={30} alt="eraser" src="/svg/eraser.svg" />
         </button>
       </div>
     </div>
