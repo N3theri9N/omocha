@@ -11,10 +11,14 @@ const ChangableButton: React.FC<{
     setSelButtonIdx(index);
   };
 
-  const buttonClass = selected ? `${classes.selected} ${classes.changable}` : classes.changable;
+  const buttonClass = selected
+    ? `${classes.selected} ${classes.changable}`
+    : classes.changable;
 
   return (
-    <button onClick={onClickHandler} className={buttonClass}>{children > 0 && children}</button>
+    <button onClick={onClickHandler} className={buttonClass}>
+      {children > 0 && children}
+    </button>
   );
 };
 

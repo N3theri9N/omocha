@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { Group } from "next/dist/shared/lib/router/utils/route-regex";
+// import { useQuery } from "@tanstack/react-query";
+// import { Group } from "next/dist/shared/lib/router/utils/route-regex";
 
 import classes from "./SudokuBoard.module.css";
 import ChangableButton from "./ChagableButton";

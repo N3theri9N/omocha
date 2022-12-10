@@ -1,15 +1,16 @@
-import { GetStaticProps, GetStaticPropsContext } from "next";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { isPropertySignature } from "typescript";
+import {FIREBASE_DOMAIN} from "../../src/global_variables";
 
 import SudokuApp from "../../src/SudokuApp";
 
 const sudoku: React.FC<{ question: string }> = (props: {
   question: string;
 }) => {
-  return (<SudokuApp question={props.question} />);
+  return <SudokuApp question={props.question} />;
 };
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [
       {
@@ -30,13 +31,12 @@ export async function getStaticPaths() {
     ],
     fallback: false,
   };
-}
+};
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const question:string|undefined = context.params?.question?.toString();
-
-  const apiResponse = await fetch(`https://react-post-de8f7-default-rtdb.firebaseio.com/omocha/sudoku/questions/${question}.json`); 
-  let sudokuQuestion = 
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext
+) => {
+  let sudokuQuestion: string = 
   `0,0,0,0,0,0,0,0,0,
   0,0,0,0,0,0,0,0,0,
   0,0,0,0,0,0,0,0,0,
@@ -45,18 +45,26 @@ export const getStaticProps: GetStaticProps = async (context) => {
   0,0,0,0,0,0,0,0,0,
   0,0,0,0,0,0,0,0,0,
   0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,`
+  0,0,0,0,0,0,0,0,0`;
 
-  if(apiResponse.ok){
-    const data = await apiResponse.json()
-    sudokuQuestion = data;
+  const question: string | undefined = context.params?.question?.toString();
+
+  const apiResponse: Response = await fetch(
+    `${FIREBASE_DOMAIN}/omocha/sudoku/questions/${question}.json`
+  );
+
+  if (apiResponse.ok) {
+    const data:string = await apiResponse.json();
+    if (typeof data === "string") {
+      sudokuQuestion = data;
+    }
   }
 
   return {
     props: {
-      question: sudokuQuestion
+      question: sudokuQuestion,
     },
-    revalidate: 60*60*24,
+    revalidate: 60 * 60 * 24,
   };
 };
 
