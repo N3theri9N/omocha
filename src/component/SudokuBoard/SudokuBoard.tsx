@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // import { Group } from "next/dist/shared/lib/router/utils/route-regex";
 
 import classes from "./SudokuBoard.module.css";
-import ChangableButton from "./ChagableButton";
+import ChangableButton from "./ChangableButton";
 import Keypad from "./Keypad";
 
 const SudokuBoard: React.FC<{question:String}> = ({ question }) => {
