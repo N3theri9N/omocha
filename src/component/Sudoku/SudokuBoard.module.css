@@ -1,11 +1,13 @@
 .sudokuBoard {
   margin: auto;
-  margin-bottom: 50px;
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(9, 1fr);
   column-gap: 1px;
   row-gap: 1px;
+  
+  padding-bottom: 50px;
+  border-bottom: solid 2px #c41374;
 }
 
 .sudokuBoard > button {

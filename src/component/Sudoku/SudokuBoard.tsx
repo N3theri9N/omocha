@@ -8,34 +8,54 @@ import ChangableButton from "./ChangableButton";
 const SudokuBoard: React.FC<{
   puzzleData: number[];
   initialPuzzldData: number[];
-  selButtonIdx: number; 
+  selButtonIdx: number;
   setSelButtonIdx: Dispatch<SetStateAction<number>>;
-}> = ({ puzzleData, initialPuzzldData, selButtonIdx, setSelButtonIdx }) => {
-
-  return (
-    <div className={classes.sudokuBoard}>
-      {puzzleData.map((num, idx) => {
-        if (initialPuzzldData[idx] <= 0) {
-          return (
-            <ChangableButton
-              key={idx}
-              setSelButtonIdx={setSelButtonIdx}
-              index={+idx}
-              selected={idx === selButtonIdx}
-            >
-              {+num}
-            </ChangableButton>
-          );
-        } else {
+  isDone: boolean;
+}> = ({
+  puzzleData,
+  initialPuzzldData,
+  selButtonIdx,
+  setSelButtonIdx,
+  isDone,
+}) => {
+  if (isDone) {
+    return (
+      <div className={classes.sudokuBoard}>
+        {puzzleData.map((num, idx) => {
           return (
             <button className={classes.fixed} key={idx}>
               {num}
             </button>
           );
-        }
-      })}
-    </div>
-  );
+        })}
+      </div>
+    );
+  } else {
+    return (
+      <div className={classes.sudokuBoard}>
+        {puzzleData.map((num, idx) => {
+          if (initialPuzzldData[idx] <= 0) {
+            return (
+              <ChangableButton
+                key={idx}
+                setSelButtonIdx={setSelButtonIdx}
+                index={+idx}
+                selected={idx === selButtonIdx}
+              >
+                {+num}
+              </ChangableButton>
+            );
+          } else {
+            return (
+              <button className={classes.fixed} key={idx}>
+                {num}
+              </button>
+            );
+          }
+        })}
+      </div>
+    );
+  }
 };
 
 export default SudokuBoard;

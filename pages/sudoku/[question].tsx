@@ -1,13 +1,13 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
-import { isPropertySignature } from "typescript";
 import {FIREBASE_DOMAIN} from "../../src/global_variables";
 
 import SudokuApp from "../../src/SudokuApp";
 
-const sudoku: React.FC<{ question: string }> = (props: {
+const sudoku: React.FC<{ question: string, questionId: string }> = (props: {
   question: string;
+  questionId: string;
 }) => {
-  return <SudokuApp question={props.question} />;
+  return <SudokuApp question={props.question} questionId={props.questionId} />;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -26,6 +26,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
       {
         params: {
           question: "2",
+        },
+      },
+      {
+        params: {
+          question: "X",
         },
       },
     ],
@@ -47,10 +52,10 @@ export const getStaticProps: GetStaticProps = async (
   0,0,0,0,0,0,0,0,0,
   0,0,0,0,0,0,0,0,0`;
 
-  const question: string | undefined = context.params?.question?.toString();
+  const questionId: string | undefined = context.params?.question?.toString();
 
   const apiResponse: Response = await fetch(
-    `${FIREBASE_DOMAIN}/omocha/sudoku/questions/${question}.json`
+    `${FIREBASE_DOMAIN}/omocha/sudoku/questions/${questionId}.json`
   );
 
   if (apiResponse.ok) {
@@ -62,6 +67,7 @@ export const getStaticProps: GetStaticProps = async (
 
   return {
     props: {
+      questionId,
       question: sudokuQuestion,
     },
     revalidate: 60 * 60 * 24,

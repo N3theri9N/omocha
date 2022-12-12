@@ -1,0 +1,24 @@
+
+.buttonGroup {
+  margin: auto;
+  padding-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+.buttonGroup div {
+  margin: 10px;
+}
+.buttonGroup .input input {
+  width:100%;
+}
+.buttonGroup button {
+  width: 100px;
+  height: 50px;
+  color: #fff;
+  font-size: 19px;
+  background-color: #279b9b;
+  border: solid 1px;
+  border-radius: 5px;
+  cursor: pointer;
+}
