@@ -1,20 +1,13 @@
-.container {
-  margin: auto;
-  width: 90%;
-}
-
-.container * {
-  font-size: 19px;
-}
-
 .sudokuBoard {
   margin: auto;
-  margin-bottom: 50px;
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(9, 1fr);
   column-gap: 1px;
   row-gap: 1px;
+  
+  padding-bottom: 50px;
+  border-bottom: solid 2px #c41374;
 }
 
 .sudokuBoard > button {
@@ -46,27 +39,9 @@
   color: #000;
 }
 
-.buttonGroup {
-  margin: auto;
-  padding-top: 20px;
-  border-top: solid 2px #c41374;
-  width: 100%;
-  text-align: center;
-}
-
-.buttonGroup button {
-  width: 100px;
-  height: 50px;
-  color: #fff;
-  font-size: 19px;
-  background-color: #279b9b;
-  border: solid 1px;
-  border-radius: 5px;
-}
-
 
 @media (min-width: 600px) {
-  .sudokuBoard  {
+  .sudokuBoard {
     max-width: 600px;
   }
 }

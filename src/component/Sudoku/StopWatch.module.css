@@ -1,0 +1,13 @@
+.stopWatch {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 600px) {
+  .stopWatch {
+    font-size:30px;
+  }
+}
+
+

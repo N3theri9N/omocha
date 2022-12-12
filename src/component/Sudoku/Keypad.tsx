@@ -2,18 +2,17 @@ import Image from "next/image";
 import classes from "./Keypad.module.css";
 
 const Keypad: React.FC<{
-  row: number;
-  col: number;
   selButtonIdx: number;
   setSelButtonIdx: Function;
   changePuzzleData: Function;
-}> = ({row, col, selButtonIdx, setSelButtonIdx, changePuzzleData}) => {
+}> = ({ selButtonIdx, setSelButtonIdx, changePuzzleData }) => {
+  const row: number = Math.floor(selButtonIdx / 9) + 1;
+  const col: number = Math.floor(selButtonIdx % 9) + 1;
+
   return (
     <div className={classes.keypadSection}>
       <div className={classes.head}>
-        <div>
-          
-        </div>
+        <div></div>
         <div>
           SELECT NUMBER OF ROW {row} , COL {col}
         </div>

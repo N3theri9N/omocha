@@ -7,6 +7,9 @@ const ChangableButton: React.FC<{
   setSelButtonIdx: Function;
   selected: boolean;
 }> = ({ index, children, setSelButtonIdx, selected }) => {
+
+  // console.log("RERENDER BUTTON ", index)
+
   const onClickHandler = () => {
     setSelButtonIdx(index);
   };
@@ -22,4 +25,4 @@ const ChangableButton: React.FC<{
   );
 };
 
-export default ChangableButton;
+export default React.memo(ChangableButton);
