@@ -1,0 +1,26 @@
+.container {
+  margin: auto;
+  width: 90%;
+}
+
+.container * {
+  font-size: 19px;
+}
+
+.buttonGroup {
+  margin: auto;
+  padding-top: 20px;
+  border-top: solid 2px #c41374;
+  width: 100%;
+  text-align: center;
+}
+
+.buttonGroup button {
+  width: 100px;
+  height: 50px;
+  color: #fff;
+  font-size: 19px;
+  background-color: #279b9b;
+  border: solid 1px;
+  border-radius: 5px;
+}

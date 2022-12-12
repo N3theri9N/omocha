@@ -22,4 +22,4 @@ const ChangableButton: React.FC<{
   );
 };
 
-export default ChangableButton;
+export default React.memo(ChangableButton);

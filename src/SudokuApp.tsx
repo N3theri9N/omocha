@@ -1,4 +1,4 @@
-import SudokuBoard from "./component/SudokuBoard/SudokuBoard";
+import Sudoku from "./component/Sudoku/Sudoku";
 import classes from './SudokuApp.module.css';
 
 const SudokuApp: React.FC<{question:string}> = ({question}) => {
@@ -8,7 +8,7 @@ const SudokuApp: React.FC<{question:string}> = ({question}) => {
       <div className={classes.title}>
         <div>SUDOKU</div>
       </div>
-      <SudokuBoard question={question} />
+      <Sudoku question={question} />
     </>
   );
 };
