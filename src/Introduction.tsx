@@ -1,6 +1,8 @@
+import Container from "./component/Introduction/Container";
+
 
 const Introduction:React.FC = () => {
-  return <div>Introduction</div>
+  return <Container />
 }
 
 export default Introduction;
