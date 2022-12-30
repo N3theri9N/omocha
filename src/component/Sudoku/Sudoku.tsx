@@ -5,12 +5,16 @@ import StopWatch from "./StopWatch";
 import SudokuBoard from "./SudokuBoard";
 import Keypad from "./Keypad";
 import ButtonGroup from "./ButtonGroup";
+import LeaderBoard from "./LeaderBoard";
 
-const Sudoku: React.FC<{ question: string, questionId: string}> = ({ question, questionId }) => {
+const Sudoku: React.FC<{ question: string; questionId: string }> = ({
+  question,
+  questionId,
+}) => {
   const [selButtonIdx, setSelButtonIdx] = useState<number>(-1);
   const [watchIsRunning, setWatchIsRunning] = useState<boolean>(true);
   const [record, setRecord] = useState(0);
-
+ 
   const INITIAL_PUZZLE_DATA: number[] = question
     .split(",")
     .map((n: string) => parseInt(n));
@@ -85,7 +89,8 @@ const Sudoku: React.FC<{ question: string, questionId: string}> = ({ question, q
 
   return (
     <div className={classes.container}>
-      <StopWatch isRunning={watchIsRunning} setRecord={setRecord}  />
+      <LeaderBoard quizId={questionId} />
+      <StopWatch isRunning={watchIsRunning} setRecord={setRecord} />
       <SudokuBoard
         puzzleData={puzzleData}
         initialPuzzldData={INITIAL_PUZZLE_DATA}
@@ -93,7 +98,9 @@ const Sudoku: React.FC<{ question: string, questionId: string}> = ({ question, q
         setSelButtonIdx={setSelButtonIdx}
         isDone={!watchIsRunning}
       />
-      {watchIsRunning || <ButtonGroup record={record} questionId={questionId} />}
+      {watchIsRunning || (
+        <ButtonGroup record={record} questionId={questionId} />
+      )}
       {selButtonIdx > -1 && (
         <Keypad
           selButtonIdx={selButtonIdx}
