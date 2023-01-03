@@ -3,28 +3,29 @@ import React, { useRef } from "react";
 import { FIREBASE_DOMAIN } from "../../global_variables";
 import { useRouter } from "next/router";
 
-const ButtonGroup: React.FC<{ record: number, questionId:string }> = ({ record, questionId }) => {
+const ButtonGroup: React.FC<{ record: number; questionId: string }> = ({
+  record,
+  questionId,
+}) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   const submitHandler = () => {
-    if (confirm("제출 하시겠습니까?")) {
-      const inputValue: undefined | string = inputRef?.current?.value;
-      const timestamp:number = Date.now();
-      fetch(`${FIREBASE_DOMAIN}/omocha/sudoku/solutions/${questionId}.json`, {
-        method: "POST",
-        body: JSON.stringify({
-          record: record,
-          message: inputValue,
-          submitDate: timestamp,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }).then(()=>{
-        router.reload();
-      })
-    }
+    const inputValue: undefined | string = inputRef?.current?.value;
+    const timestamp: number = Date.now();
+    fetch(`${FIREBASE_DOMAIN}/omocha/sudoku/solutions/${questionId}.json`, {
+      method: "POST",
+      body: JSON.stringify({
+        record: record,
+        message: inputValue,
+        submitDate: timestamp,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => {
+      router.reload();
+    });
   };
 
   return (
