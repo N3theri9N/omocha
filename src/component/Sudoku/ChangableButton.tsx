@@ -6,7 +6,8 @@ const ChangableButton: React.FC<{
   children: number;
   setSelButtonIdx: Function;
   selected: boolean;
-}> = ({ index, children, setSelButtonIdx, selected }) => {
+  failed: boolean;
+}> = ({ index, children, setSelButtonIdx, selected, failed }) => {
 
   // console.log("RERENDER BUTTON ", index)
 
@@ -17,9 +18,10 @@ const ChangableButton: React.FC<{
   const buttonClass = selected
     ? `${classes.selected} ${classes.changable}`
     : classes.changable;
+  const buttonFailed = failed && classes.failed;
 
   return (
-    <button onClick={onClickHandler} className={buttonClass}>
+    <button onClick={onClickHandler} className={`${buttonClass} ${buttonFailed}`}>
       {children > 0 && children}
     </button>
   );
