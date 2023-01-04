@@ -43,7 +43,7 @@ const SudokuBoard: React.FC<{
                 setSelButtonIdx={setSelButtonIdx}
                 index={+idx}
                 selected={idx === selButtonIdx}
-                failed={wrongIdx.includes(idx)}
+                wrong={wrongIdx.includes(idx)}
               >
                 {+num}
               </ChangableButton>

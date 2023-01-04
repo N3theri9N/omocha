@@ -49,6 +49,7 @@
   border: solid 3px #fff;
   background-color: #c41374;
   color: white;
+  font-size: 19px;
 }
 
 .keypad button:hover {

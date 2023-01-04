@@ -32,7 +32,7 @@ const StopWatch: React.FC<{
       clearInterval(interval);
       setRecord(totalSeconds);
     };
-  }, [isRunning]);
+  }, [isRunning, totalSeconds, setRecord] );
 
   const [hours, remains] = divValueAndRest(totalSeconds, 3600);
   const [minutes, seconds] = divValueAndRest(remains, 60);

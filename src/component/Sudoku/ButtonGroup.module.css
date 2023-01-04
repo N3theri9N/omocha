@@ -6,12 +6,25 @@
   text-align: center;
   font-weight: bold;
 }
+
 .buttonGroup div {
   margin: 10px;
 }
-.buttonGroup .input input {
+
+.buttonGroup .inputGroup {
   width:100%;
 }
+
+.inputGroup .input {
+  width: 95%;
+  max-width: 550px;
+}
+
+.inputGroup .lengthLabel {
+  font-size: 11px;
+  color: gray;
+}
+
 .buttonGroup button {
   width: 100px;
   height: 50px;
@@ -21,4 +34,24 @@
   border: solid 1px;
   border-radius: 5px;
   cursor: pointer;
+  margin-right: 10px;
+}
+.buttonGroup button:hover {
+  background-color: rgba(0, 140, 255);
+}
+
+.copyLabel {
+  font-size: 15px;
+  padding: 5px;
+  font-weight: 400;
+  background-color: lightgreen;
+  opacity: 1;
+  animation: fadein 4s linear;
+}
+
+@keyframes fadein {
+  0% { opacity : 0}
+  10% { opacity : 1}
+  90% { opacity : 1}
+  100% { opacity : 0}
 }

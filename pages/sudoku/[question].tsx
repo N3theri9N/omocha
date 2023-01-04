@@ -11,29 +11,14 @@ const sudoku: React.FC<{ question: string, questionId: string }> = (props: {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
+
+  const response = await fetch(`${FIREBASE_DOMAIN}/omocha/sudoku/questions.json?shallow=true`);
+  const data = await response.json();
+  const quizData = Object.keys(data); 
+  const paths = quizData.map(id => { return {params :{ question: id}};});
+
   return {
-    paths: [
-      {
-        params: {
-          question: "0",
-        },
-      },
-      {
-        params: {
-          question: "1",
-        },
-      },
-      {
-        params: {
-          question: "2",
-        },
-      },
-      {
-        params: {
-          question: "X",
-        },
-      },
-    ],
+    paths,
     fallback: false,
   };
 };
