@@ -17,6 +17,7 @@
 
 .inputGroup .input {
   width: 95%;
+  font-size: 19px;
   max-width: 550px;
 }
 
@@ -36,6 +37,10 @@
   cursor: pointer;
   margin-right: 10px;
 }
+.buttonGroup button:last-child {
+  margin-right: 0px;
+}
+
 .buttonGroup button:hover {
   background-color: rgba(0, 140, 255);
 }
