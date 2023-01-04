@@ -12,7 +12,7 @@
   color: rgb(0, 140, 255);
 }
 
-.changable.failed {
+.changable.wrong {
   color: red;
   text-decoration: underline;
 }

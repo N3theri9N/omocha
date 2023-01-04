@@ -11,10 +11,20 @@ const LeaderBoard: React.FC<{ quizId: string }> = ({ quizId }) => {
     setLeaderBoardVisible((prevState) => !prevState);
   };
 
+  const arrow = () => {
+    return leaderBoardVisible ? <>&#8420;</> : <>&#9660;</>;
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <div className={classes.leaderBoard}>
-        <button className={classes.leaderBoardButton} onClick={toggleLeaderBoard}>TOP 5</button>
+        <button
+          className={classes.leaderBoardButton}
+          onClick={toggleLeaderBoard}
+        >
+          <div className={classes.text}>TOP 5</div>
+          <div className={classes.arrow}>{arrow()}</div>
+        </button>
         {leaderBoardVisible && <Example quizId={quizId} />}
       </div>
     </QueryClientProvider>
@@ -37,7 +47,7 @@ const Example: React.FC<{ quizId: string }> = ({ quizId }) => {
     `leaderBoard${quizId}`,
     async () => {
       const response = await fetch(
-        `https://react-post-de8f7-default-rtdb.firebaseio.com/omocha/sudoku/solutions/${quizId}.json`
+        `/api/sudoku/leaderBoard/${quizId}`
       );
       return await response.json();
     },
@@ -56,19 +66,33 @@ const Example: React.FC<{ quizId: string }> = ({ quizId }) => {
 
   // if (error) return <>'error has occured'</>;
 
+  type Records = {
+    message: string,
+    record: number,
+  }
+
   return (
     <div className={classes.leaderBoardList}>
-      {recordArray.map((item, index) => {
-        if (index > 5) {
+      {recordArray.length < 1 && (
+        <div className={classes.leaderBoardRow}> * 기록이 없습니다.</div>
+      )}
+      {recordArray.map((item:Records, index) => {
+        if (index >= 5) {
           return null;
         }
         const [hours, remains] = divValueAndRest(item.record, 3600);
         const [minutes, seconds] = divValueAndRest(remains, 60);
+
+        let message:string = item.message || "";
+        if(message.trim().length <= 0){
+          message = "(내용이 없습니다.)"
+        }
+
         return (
           <div key={index} className={classes.leaderBoardRow}>
-            {hours ? hours + " 시간" : ""}
-            {minutes ? minutes + " 분" : ""}
-            {seconds ? seconds + " 초" : ""} : {item.message}
+            {hours > 0 && `${hours} 시간 `}
+            {minutes > 0 && `${minutes} 분 `}
+            {seconds > 0 && `${seconds} 초 `} : {message}
           </div>
         );
       })}
