@@ -7,7 +7,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={new QueryClient()}>
-      <Header />
+      {/* <Header /> */}
       <Component {...pageProps} />
     </QueryClientProvider>
   );

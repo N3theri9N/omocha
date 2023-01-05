@@ -1,3 +1,25 @@
+.modalBack {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+}
+.modal {
+  position: relative;
+  top: 100px;
+  padding-top : 100px;
+  background-color: white;
+  max-width: 600px;
+  height: 50vh;
+  margin: auto;
+}
+@media (min-width: 600px) {
+  .modal {
+    padding: 50px;
+  }
+}
 
 .buttonGroup {
   margin: auto;
@@ -12,7 +34,7 @@
 }
 
 .buttonGroup .inputGroup {
-  width:100%;
+  width: 100%;
 }
 
 .inputGroup .input {
@@ -55,8 +77,16 @@
 }
 
 @keyframes fadein {
-  0% { opacity : 0}
-  10% { opacity : 1}
-  90% { opacity : 1}
-  100% { opacity : 0}
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
