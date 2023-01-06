@@ -1,0 +1,44 @@
+.OptionalButton  {
+  margin: auto;
+  text-align: center;
+}
+
+.OptionalButton button {
+  margin: auto;
+  background-color: #279b9b;
+  color: white;
+  border: solid 2px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  width: 100px;
+  height: 30px;
+}
+
+.saveLabel {
+  width: 100%;
+  margin-top: 40px;
+  background-color: lightgreen;
+  font-size: 15px;
+  font-weight: 400;
+  padding-top : 5px;
+  padding-bottom : 5px;
+  text-align: center;
+  opacity: 1;
+  animation: fadein 4s linear;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

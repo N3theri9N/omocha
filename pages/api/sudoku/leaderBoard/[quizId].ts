@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import { FIREBASE_DOMAIN } from "../../../../src/global_variables";
+import crypto from "crypto-js";
 
 export default async function handler(
   req: NextApiRequest,
@@ -14,27 +15,35 @@ export default async function handler(
 
     res.status(200).json(data);
   } else if (req.method === "POST") {
-    console.log("POST!");
-    const {quizId, record, message, submitDate} = req.body;
+    const cryptoKey: string = process.env.CRYPTO_KEY || "";
+    const { quizId, record, message, submitDate } = req.body;
+    try {
+      const decryptedRecord: number = +crypto.AES.decrypt(
+        record,
+        cryptoKey
+      ).toString(crypto.enc.Utf8);
 
-    const response = await fetch(
-      `${FIREBASE_DOMAIN}/omocha/sudoku/solutions/${quizId}.json`,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          record,
-          message,
-          submitDate,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const response = await fetch(
+        `${FIREBASE_DOMAIN}/omocha/sudoku/solutions/${quizId}.json`,
+        {
+          method: "POST",
+          body: JSON.stringify({
+            record: decryptedRecord,
+            message,
+            submitDate,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        res.status(500);
+      } else {
+        res.status(200).send({});
       }
-    );
-    if (!response.ok) {
-      res.status(500);
-    } else {
-      res.status(200).send({});
+    } catch(e) {
+      res.status(500).send("그런 머가리로 뚫릴줄 알았니? ㅋㅋㅋㅋㅋㅋㅋㅋㅋ");
     }
   }
 }
