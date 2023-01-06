@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { QueryClient, QueryClientProvider, useQuery } from "react-query";
+import { secondToTime } from "./secondToTime";
 import classes from "./LeaderBoard.module.css";
 
 const queryClient = new QueryClient();
@@ -80,8 +81,6 @@ const Example: React.FC<{ quizId: string }> = ({ quizId }) => {
         if (index >= 5) {
           return null;
         }
-        const [hours, remains] = divValueAndRest(item.record, 3600);
-        const [minutes, seconds] = divValueAndRest(remains, 60);
 
         let message:string = item.message || "";
         if(message.trim().length <= 0){
@@ -90,9 +89,7 @@ const Example: React.FC<{ quizId: string }> = ({ quizId }) => {
 
         return (
           <div key={index} className={classes.leaderBoardRow}>
-            {hours > 0 && `${hours} 시간 `}
-            {minutes > 0 && `${minutes} 분 `}
-            {seconds > 0 && `${seconds} 초 `} : {message}
+            {secondToTime(item.record) } : {message}
           </div>
         );
       })}
