@@ -1,0 +1,9 @@
+.intro {
+  padding: 25px;
+  border-radius: 25px;
+  border: solid 0.5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 25px;
+}
+.title {
+  border-bottom: solid 0.5px lightgray;
+}

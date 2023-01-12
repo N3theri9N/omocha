@@ -1,12 +1,26 @@
 import classes from "./Container.module.css";
+import Headline from "./Headline";
+import Intro from "./Intro";
+import MainCareer from "./MainCareer";
+import MainProjects from "./MainProjects";
+import SideProjects from "./SideProjects";
+import MyStack from "./MyStack";
+import History from "./History";
+import Study from "./Study";
 
-const Container:React.FC = () => {
-  return <div className={classes.container}>
-    <div>
-    <h2>Let me Introduce MySelf</h2>
+const Container: React.FC = () => {
+  return (
+    <div className={classes.container}>
+      <Headline />
+      <Intro />
+      <MainCareer />
+      <MainProjects />
+      <SideProjects />
+      <MyStack />
+      <History />
+      <Study />
     </div>
-  </div>
-
-}
+  );
+};
 
 export default Container;
