@@ -8,12 +8,14 @@ import ChangableButton from "./ChangableButton";
 const SudokuBoard: React.FC<{
   puzzleData: number[];
   initialPuzzldData: number[];
+  wrongIdx: number[];
   selButtonIdx: number;
   setSelButtonIdx: Dispatch<SetStateAction<number>>;
   isDone: boolean;
 }> = ({
   puzzleData,
   initialPuzzldData,
+  wrongIdx = [],
   selButtonIdx,
   setSelButtonIdx,
   isDone,
@@ -41,6 +43,7 @@ const SudokuBoard: React.FC<{
                 setSelButtonIdx={setSelButtonIdx}
                 index={+idx}
                 selected={idx === selButtonIdx}
+                wrong={wrongIdx.includes(idx)}
               >
                 {+num}
               </ChangableButton>

@@ -6,20 +6,20 @@ const ChangableButton: React.FC<{
   children: number;
   setSelButtonIdx: Function;
   selected: boolean;
-}> = ({ index, children, setSelButtonIdx, selected }) => {
-
-  // console.log("RERENDER BUTTON ", index)
-
+  wrong: boolean;
+}> = ({ index, children, setSelButtonIdx, selected, wrong }) => {
   const onClickHandler = () => {
     setSelButtonIdx(index);
   };
 
-  const buttonClass = selected
-    ? `${classes.selected} ${classes.changable}`
-    : classes.changable;
+  const selectedClass = selected && classes.selected;
+  const wrongClass = wrong && classes.wrong;
 
   return (
-    <button onClick={onClickHandler} className={buttonClass}>
+    <button
+      onClick={onClickHandler}
+      className={`${classes.changable} ${selectedClass} ${wrongClass}`}
+    >
       {children > 0 && children}
     </button>
   );

@@ -12,4 +12,8 @@
   color: rgb(0, 140, 255);
 }
 
+.changable.wrong {
+  color: red;
+  text-decoration: underline;
+}
 
