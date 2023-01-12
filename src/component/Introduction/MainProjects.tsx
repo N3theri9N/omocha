@@ -50,7 +50,7 @@ const MainProjects: React.FC = () => {
           <p>
             <b>
               URL{" : "}
-              <a href="https://campaign.naver.com/insurance/" target="_blank">
+              <a href="https://campaign.naver.com/insurance/" target="_blank" rel="noreferrer">
                 https://campaign.naver.com/insurance/
               </a>
             </b>

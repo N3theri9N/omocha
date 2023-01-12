@@ -36,6 +36,7 @@ const Headline: React.FC = () => {
             <td>
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://github.com/N3theri9N"
                 className={classes.link}
               >
@@ -58,6 +59,7 @@ const Headline: React.FC = () => {
             <td>
               <a
                 target="_blank"
+                rel="noreferrer"
                 href="https://nnea5215.notion.site/"
                 className={classes.link}
               >

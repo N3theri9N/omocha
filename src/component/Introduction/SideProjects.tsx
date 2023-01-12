@@ -42,6 +42,7 @@ const SideProjects: React.FC = () => {
             <a
               href="/sudoku/daily"
               target="_blank"
+              rel="noreferrer"
             >
               https://omocha-nine.vercel.app/sudoku/daily
             </a>
@@ -51,6 +52,7 @@ const SideProjects: React.FC = () => {
             <a
               href="https://github.com/N3theri9N/omocha/tree/feature/sudoku"
               target="_blank"
+              rel="noreferrer"
             >
               https://github.com/N3theri9N/omocha/tree/feature/sudoku
             </a>
