@@ -21,7 +21,7 @@ const Header: React.FC = () => {
     <>
       <div className={classes.header}>
         <div></div>
-        <div className={classes.title}>{t("title")}</div>
+        <div className={classes.title}>RESUME</div>
         <div className={classes.buttons} onClick={languageToggleHandler}>
           <Image src="/svg/language.svg" alt="home" className={classes.icon} width={40} height={40} />
         </div>
