@@ -7,7 +7,7 @@ const MyStack = () => {
   const { t } = useTranslation();
   return (
     <div className={`${classes.MainCareer} ${layout.hoc}`}>
-      <h2 className={classes.title}>기술 스택</h2>
+      <h2 className={classes.title}>{t("Tech Stack")}</h2>
       <div className={classes.gridContainer}>
         <Image
           src="/logos/html.svg"

@@ -24,11 +24,11 @@ const SideProjects: React.FC = () => {
           <p>
             {t("IP_Intro")}
           </p>
+          <p>{t("participants")} : {t("BackDev")} 3, {t("FrontDev")} 2</p>
           <p>
             <b>{t("Used Stack")}</b> {" : "} JavaScript, React
           </p>
-          <p>{t("participants")} : {t("BackDev")} 3, {t("FrontDev")} 2</p>
-          <p>{t("issues")}</p>
+          <p><b>{t("issues")}</b></p>
           <ul className={layout.list} dangerouslySetInnerHTML={{ __html: t("IP_Issue") }} />
         </div>
       </div>
@@ -62,7 +62,7 @@ const SideProjects: React.FC = () => {
             react-query
           </p>
 
-          <p>{t("issues")}</p>
+          <p><b>{t("issues")}</b></p>
 
           <ul className={layout.list} dangerouslySetInnerHTML={{ __html: t("DS_Issue") }} />
             

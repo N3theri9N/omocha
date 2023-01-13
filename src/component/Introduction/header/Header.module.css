@@ -18,6 +18,10 @@
   font-weight:600;
   cursor: pointer;
 }
+.title {
+  color: white;
+  font-size: 26px;
+}
 
 .icon {
   fill: #fff;

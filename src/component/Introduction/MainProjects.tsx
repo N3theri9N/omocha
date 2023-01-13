@@ -17,7 +17,7 @@ const MainProjects: React.FC = () => {
             {t("participants")} : {t("Marketer")} 1, {t("Web Designer")} 1, {t("Event Developer")} 2
           </p>
           <p>{t("Used Stack")} : ReactJS, MySQL, ElasticSearch</p>
-          <p>{t("role")}</p>
+          <p><b>{t("role")}</b></p>
           <ul
             className={layout.list}
             dangerouslySetInnerHTML={{ __html: t("NSLP_ROLE") }}
@@ -35,7 +35,7 @@ const MainProjects: React.FC = () => {
             {t("participants")} : {t("Event Developer")} 1, {t("Marketer")} 2, {t("Web Designer")} 1, {t("M Part Developer")} 1
           </p>
           <p>{t("Used Stack")} : PHP, Redis, MySQL, crontab</p>
-          <p>{t("role")}</p>
+          <p><b>{t("role")}</b></p>
           <ul className={layout.list} dangerouslySetInnerHTML={{ __html: t("NMP_ROLE") }} />
           <p>
             <b>{t("NMP_CONT")}</b>
@@ -62,7 +62,7 @@ const MainProjects: React.FC = () => {
           <p>
             {t("Used Stack")} : JavaScript, PHP, Redis, ReactJS, Spring, MySQL
           </p>
-          <p>{t("role")}</p>
+          <p><b>{t("role")}</b></p>
           <ul className={layout.list}  dangerouslySetInnerHTML={{ __html: t("PIG_ROLE") }}  />
           <p>
             <b>{t("PIG_CONT")}</b>
@@ -79,7 +79,7 @@ const MainProjects: React.FC = () => {
             {t("participants")} : {t("Event Developer")} 1, {t("Marketer")} 1, {t("Web Designer")} 1
           </p>
           <p>{t("Used Stack")} : JavaScript, PHP, ReactJS, Nginx.</p>
-          <p>{t("role")}</p>
+          <p><b>{t("role")}</b></p>
           <ul className={layout.list} dangerouslySetInnerHTML={{ __html: t("VlP_ROLE") }} />
           <p>
             <b>{t("VlP_CONT")}</b>
@@ -98,7 +98,7 @@ const MainProjects: React.FC = () => {
           <p>
             {t("Used Stack")} : JavaScript, JQuery, PHP, MySQL, ReactJS, Spring
           </p>
-          <p>{t("role")}</p>
+          <p><b>{t("role")}</b></p>
           <ul className={layout.list} dangerouslySetInnerHTML={{ __html: t("NPP_ROLE") }} />
         </div>
       </div>

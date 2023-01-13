@@ -1,6 +1,6 @@
 {
   "title" : "RESUME",
-  "namae": "DoYoon Kim",
+  "namae": "Kim Do-Yoon",
 
   "introTitle" : "Intro",  
   "introSection" : "<p>Hello, I am front-end developer Kim Do-yoon. He has been involved in web application development for 5 years, both front-end and back-end.</p><p>In the meantime, I have been mainly developing B2C promotion pages. I have contributed to optimizing the page, reducing repetitive work. Thinking about how to render on the screen is interesting, so I've been growing with continuous interest in the front-end section.</p><p>I am participating in development forums and studies to acquire front-end development capabilities, and I am learning what it takes to build a service by creating personal projects. Based on my experience so far, I think I will be able to get to know you and grow together by communicating smoothly as a front-end role.</p>",
@@ -24,7 +24,7 @@
   "M Part Developer" : "Membership Dept Developer",
   "Marketer" : "Marketer",
   "Web Designer" : "Web Designer",
-  "role" : "role : ",
+  "role" : "role",
   "WS_Role1" : "As a part of Naver Pay promotion production, After receiving the design result, I was in charge of applying the script and deployment.",
   "WS_Role2" : "Handled two types of Projects : B2C user participation event project and B2B admin project.",
   "WS_CONT" : "<li><b>Promotion page project</b></li><ul><li>This is a project composed of B2C Promotion pages. In order to encourage users to use Naver Pay, we collaborate with marketers to create promotional pages.</li><li>The basic function is to store the user's participation history in the DB. According to the promotion specifications, it is produced using such as APIs from other departments, crontab, Redis, and Elastic Search.</li><li>The event page project consists of PHP7, JavaScript ES5, JQuery, and Nginx.</li></ul><li><b>Promotion Page Admin Project</b></li><ul><li>This is a B2B project for marketersB2B It includes several functions such as user participation history leaderboard, data management by date, project template management, etc.</li><li>It is made of Spring Framework, and the front part is coverted from JSP to React.</li></ul>",
@@ -48,7 +48,7 @@
   "NPP_ROLE" : "<li>This is the basic structure of most event pages. It have functions to store user participation data in the DB.</li><li>Periodically create a page advertising Naver Pay benefits to be paid upon participation.</li><li>Application of front and backend logic scripts in markup artifacts. Apply libraries such as slick and swiper as needed.</li><li>Implementation of a function that allows the admin/marketer to view the contents of the member's participation stored in the MySQL DB in the service.</li>",
 
   "IP_Intro" : "An app application that prepares for technical interviews by practicing computer science questions",
-  "IP_Issue" : "IP_Issue",
+  "IP_Issue" : "<li>Implement JWT token storage function in React Context</li><li>Focus on react components optimization.</li><li>Appliance custom hook to reduce boiler plate by frequent request of Rest API Request.</li><li>Proceed with API integration while receiving Rest API support from the backend side</li>",
   
   "revealed" : "Web URL",
   "Daily Sudoku" : "Daily Sudoku",
