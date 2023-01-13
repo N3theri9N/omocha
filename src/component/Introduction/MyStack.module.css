@@ -1,0 +1,16 @@
+.MainCareer {
+  --base-color: rgb(16, 116, 116);
+  border: solid 1px var(--base-color);
+}
+
+.title {
+  border-bottom: solid 0.5px var(--base-color);
+  background-color: rgb(16, 116, 116, 0.1);
+}
+
+.gridContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  /* justify-content:space-around; */
+}

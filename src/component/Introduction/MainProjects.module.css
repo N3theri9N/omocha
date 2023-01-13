@@ -1,0 +1,9 @@
+.MainProjects {
+  --base-color: rgb(114, 14, 114);
+  border: solid 1px var(--base-color);
+}
+
+.title {
+  border-bottom: solid 0.5px var(--base-color);
+  background-color: rgb(114, 14, 114, 0.1);
+}
