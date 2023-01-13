@@ -2,6 +2,7 @@ import classes from "./Header.module.css";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import { useState } from "react";
+import { t } from "i18next";
 
 const Header: React.FC = () => {
   const { i18n } = useTranslation();
@@ -20,7 +21,7 @@ const Header: React.FC = () => {
     <>
       <div className={classes.header}>
         <div></div>
-        <div></div>
+        <div className={classes.title}>{t("title")}</div>
         <div className={classes.buttons} onClick={languageToggleHandler}>
           <Image src="/svg/language.svg" alt="home" className={classes.icon} width={40} height={40} />
         </div>
