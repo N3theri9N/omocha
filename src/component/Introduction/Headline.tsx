@@ -30,7 +30,7 @@ const Headline: React.FC = () => {
                 width={20}
                 height={20}
               />
-              GitHub
+               GitHub
             </th>
             <td>:</td>
             <td>
@@ -53,7 +53,7 @@ const Headline: React.FC = () => {
                 width={20}
                 height={20}
               />
-              Notion
+               Notion
             </th>
             <td>:</td>
             <td>

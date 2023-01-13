@@ -30,7 +30,7 @@ const MainProjects: React.FC = () => {
           <p>{t("WS_Role2")}</p>
           <ul
             className={layout.list}
-            dangerouslySetInnerHTML={{ __html: t("CarrerPromo") }}
+            dangerouslySetInnerHTML={{ __html: t("WS_CONT") }}
           />
         </div>
       </div>

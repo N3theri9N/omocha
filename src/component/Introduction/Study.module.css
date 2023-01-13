@@ -1,11 +1,11 @@
 .History {
-  --base-color: rgb(116, 16, 16);
+  --base-color: rgb(216, 216, 16);
   border: solid 1px var(--base-color);
 }
 
 .title {
   border-bottom: solid 0.5px var(--base-color);
-  background-color: rgb(116, 16, 16, 0.1);
+  background-color: rgb(216, 216, 16, 0.1);
 }
 
 .license {

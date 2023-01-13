@@ -1,7 +1,69 @@
 {
-  "title" : "Appliance",
+  "title" : "RESUME",
   "namae": "DoYoon Kim",
+
+  "introTitle" : "Intro",  
+  "introSection" : "<p>Hello, I am front-end developer Kim Do-yoon. He has been involved in web application development for 5 years, both front-end and back-end.</p><p>In the meantime, I have been mainly developing B2C promotion pages. I have contributed to optimizing the page, reducing repetitive work. Thinking about how to render on the screen is interesting, so I've been growing with continuous interest in the front-end section.</p><p>I am participating in development forums and studies to acquire front-end development capabilities, and I am learning what it takes to build a service by creating personal projects. Based on my experience so far, I think I will be able to get to know you and grow together by communicating smoothly as a front-end role.</p>",
+
   "MainCareerTitle" : "Main Career",
   "MainProjectsTitle" : "Handled Projects",
-  "SideProjectsTitle" : "Side Projects"
+  "SideProjectsTitle" : "Side Projects",
+  "Team Project" : "Team Project",
+  "Private Project" : "Private Project",
+  "webServicePart" : "Web Service Development Dept",
+  "Tech Stack" : "Tech Stack",
+  "Used Stack" : "Used Stack",
+  "issues" : "issues : ",
+  "participants" : "participants",
+  "Service Domain" : "Service Domain",
+  "Responsibilities" : "Responsibilities",
+  "Promotion Page Promotion" : "Promotion Page Project",
+  "Event Developer" : "Event Developer",
+  "BackDev" : "Backend Dev",
+  "FrontDev" : "Frontend Dev",
+  "M Part Developer" : "Membership Dept Developer",
+  "Marketer" : "Marketer",
+  "Web Designer" : "Web Designer",
+  "role" : "role : ",
+  "WS_Role1" : "As a part of Naver Pay promotion production, After receiving the design result, I was in charge of applying the script and deployment.",
+  "WS_Role2" : "Handled two types of Projects : B2C user participation event project and B2B admin project.",
+  "WS_CONT" : "<li><b>Promotion page project</b></li><ul><li>This is a project composed of B2C Promotion pages. In order to encourage users to use Naver Pay, we collaborate with marketers to create promotional pages.</li><li>The basic function is to store the user's participation history in the DB. According to the promotion specifications, it is produced using such as APIs from other departments, crontab, Redis, and Elastic Search.</li><li>The event page project consists of PHP7, JavaScript ES5, JQuery, and Nginx.</li></ul><li><b>Promotion Page Admin Project</b></li><ul><li>This is a B2B project for marketersB2B It includes several functions such as user participation history leaderboard, data management by date, project template management, etc.</li><li>It is made of Spring Framework, and the front part is coverted from JSP to React.</li></ul>",
+  
+  "NSLP" : "Naver Shopping Live Promotion",
+  "NSLP_ROLE" : "<li>This is a Shopping Live promotion page, providing marketers with an admin function so that different Shopping Live products can be displayed on the page for each period. It also supports the click metrics function which product is clicked by users.</li><li>I work on the admin page and fellow developers work on the service page. The admin form and the click indicator are handled separately and proceed in a mutually cooperate.</li><li>Admin has an input form. It can set the product data such sa name, image, url landing address, posting time, click index value.</li><li>Since there are many images on one page, there are concerns about performance issues, so set the CDN address.</li><li>The click ping data is stored in ElasticSearch, and the ping data is figure out leaderboard in the admin.</li>", 
+  "NSLP_CONT" : "Achievements : Completed click metrics feature and built as a library. Minimize deployment process by providing admin function.",
+
+  "NMP": "Naver Membership Promotion",
+  "NMP_ROLE" : "<li>An event in which a user who has signed up for membership issues a friend invitation code and get points when the invited friend signs up for membership.</li><li>Provides membership signup callback API and receives membership subscription API, and proceeds with mutual interworking between departments.</li><li>Saving friend invitation history DB, SNS sharing function, implements leaderboard function about the number of registered friends.</li><li>Reliably implemented leaderboard function using Crontab and Redis to avoid requesting DB GroupBy for every user's connection.</li><li>Create a function to send logs each time the user executes the script, so that detailed responses to customer inquiries are possible. (Based on Apache Lucene)</li>",
+  "NMP_CONT" : "Achievements : Minimize customer inquiries that are difficult to answer, solve overload problems by optimizing leaderboard functions.",
+
+  "PIG" : "Insurance Guide for President",
+  "PIG_ROLE" : "<li>This page is designed for bosses, and has a self-check function to check what kind of insurance you need to sign up for.</li><li>Supports SMS and mail transmission function for check result contents.</li><li>Store data as a key with a TimeStamp and a random number combination so that we can pause and resume the survey or view the results again at a later time. (Session is a consistency and optimization issue, adopting this method)</li><li>Check result dashboard function support for admin project.</li><li>For sending mail and SMS, the sender is determined, so a dedicated API is used instead of a public library.</li><li>To apply the FAQ function, use resposes from the insurance department's API.</li>",
+  "PIG_CONT" : "Achievements : Received a lot of attention with about 1000 checks a day in the first week of release.",
+
+  "VlP_ROLE" : "<li>Support for creating a pop-up page that appears first when accessing the V Live app. A pop-up consists of buttons that land on a product sales page.</li><li>Supports up to 10 languages. When accessing in a language that does not support, it redirects to English page.</li><li>Responding to cross-browsing issues for each V Live web/Android/iOS application environment. Trouble shooting with test app.</li><li>Improvement of the development process because pages with different designs but the same function. Implementation of a template creation tool so that marketers can create their own pages.</li><li>Design resources are pushed to the git repository → admin executes remotely to pull resources from the git repository to the event server → common scripts in the service are linked with the resources stored in the server.</li>",
+  "VlP_CONT" : "Achievement: Minimize the distribution process after tool creation.",
+  
+  "NPP" : "Naver Pay Promotion",
+  "NPP_ROLE" : "<li>This is the basic structure of most event pages. It have functions to store user participation data in the DB.</li><li>Periodically create a page advertising Naver Pay benefits to be paid upon participation.</li><li>Application of front and backend logic scripts in markup artifacts. Apply libraries such as slick and swiper as needed.</li><li>Implementation of a function that allows the admin/marketer to view the contents of the member's participation stored in the MySQL DB in the service.</li>",
+
+  "IP_Intro" : "An app application that prepares for technical interviews by practicing computer science questions",
+  "IP_Issue" : "IP_Issue",
+  
+  "revealed" : "Web URL",
+  "Daily Sudoku" : "Daily Sudoku",
+  "DS_Issue" : "<li>Adopt NextJS to take advantage of SSG.</li><li>Typescript is used to practice for adapting ReactJS.</li><li>There is a record submission function after completion and a leaderboard function is implemented. Leaderboards linked to firebase.</li><li>Adopt react-query to enable periodic update of leaderboard.</li><li>Optimize the function to avoid doing too many checks each time you fill in a number field. (For example, do not re-examine parts that have already been identified as incorrect)</li><li>Initially, I decided to create a few static puzzle pages, but after the release, I implemented a daily random generation function based on feedback.</li>",
+  
+  "History" : "Education and Military Service",
+  "Bachelor" : "Bachelor graduation",
+  "UNIVERSITY" : "Hanyang University ERICA Campus",
+  "CE" : "Computer Engineering",
+  "Army" : "Army",
+  "Sergent" : "Sergeant expired",
+
+  "NC_Socket_Issue" :"<li><a target='_blank' rel='noreferrer' href='https://nnea5215.notion.site/Nomad-Coder-Web-socket-34009eb8a3d644b3ab9c302a2fb06837'>Notion Link</a></li><li>SocketIO lecture challenge to enable continuous connection between server and client</li><li>The process of creating a 1:1 video chat app, completing assignments at given date intervals</li><li>Complete all assignments</li>",
+  "NC_TS_ISSUE" : "<li><a target='_blank' rel='noreferrer' href='https://nnea5215.notion.site/Nomad-Coder-TS-aff2bfe0429b4d109f318bf218f8b371'>Notion Link</a></li><li>Typescript lectures, daily challenge course to solve given tasks</li><li>Complete all assignments</li><li>Since then, all personal projects have been converted to TypeScript.</li>",
+  "Study" : "Study",
+  
+  "Notion Link" : "Notion Link"
 }

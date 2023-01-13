@@ -1,11 +1,11 @@
 .MainCareer {
-  --base-color: rgb(116, 16, 16);
+  --base-color: rgb(16, 116, 116);
   border: solid 1px var(--base-color);
 }
 
 .title {
   border-bottom: solid 0.5px var(--base-color);
-  background-color: rgb(116, 16, 16, 0.1);
+  background-color: rgb(16, 116, 116, 0.1);
 }
 
 .gridContainer {

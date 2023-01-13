@@ -36,7 +36,8 @@ const MainProjects: React.FC = () => {
           </p>
           <p>{t("Used Stack")} : PHP, Redis, MySQL, crontab</p>
           <p>{t("role")}</p>
-          <ul className={layout.list} dangerouslySetInnerHTML={{ __html: t("NMP_ROLE") }} />          <p>
+          <ul className={layout.list} dangerouslySetInnerHTML={{ __html: t("NMP_ROLE") }} />
+          <p>
             <b>{t("NMP_CONT")}</b>
           </p>
         </div>

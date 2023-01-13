@@ -14,9 +14,11 @@ const SideProjects: React.FC = () => {
         </div>
         <div className={layout.item}>
           <p>
-            <b>GIT Repo : </b>
-            <a href="https://github.com/N3theri9N/front_interviewprep">
-              https://github.com/N3theri9N/front_interviewprep
+            <a 
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/N3theri9N/front_interviewprep">
+            <b>GIT Repository</b>
             </a>
           </p>
           <p>
@@ -38,23 +40,21 @@ const SideProjects: React.FC = () => {
         </div>
         <div className={layout.item}>
           <p>
-            <b>{t("revealed")}</b>
             <a
               href="/sudoku/daily"
               target="_blank"
               rel="noreferrer"
             >
-              https://omocha-nine.vercel.app/sudoku/daily
+              <b>{t("revealed")}</b>
             </a>
           </p>
           <p>
-            <b>GIT Repo : </b>
             <a
               href="https://github.com/N3theri9N/omocha/tree/feature/sudoku"
               target="_blank"
               rel="noreferrer"
             >
-              https://github.com/N3theri9N/omocha/tree/feature/sudoku
+              <b>GIT Repository</b>
             </a>
           </p>
           <p>
@@ -63,6 +63,7 @@ const SideProjects: React.FC = () => {
           </p>
 
           <p>{t("issues")}</p>
+
           <ul className={layout.list} dangerouslySetInnerHTML={{ __html: t("DS_Issue") }} />
             
         </div>
