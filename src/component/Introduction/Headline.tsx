@@ -5,7 +5,7 @@ const Headline: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={classes.headline}>
+    <div id="headline" className={classes.headline}>
       <h1>{t("title")}</h1>
       <table>
         <thead>

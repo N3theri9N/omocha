@@ -9,6 +9,7 @@ import History from "./History";
 import Study from "./Study";
 
 const Container: React.FC = () => {
+
   return (
     <div className={classes.container}>
       <Headline />

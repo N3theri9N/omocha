@@ -6,7 +6,7 @@ import layout from "./BodyLayout.module.css";
 const MyStack = () => {
   const { t } = useTranslation();
   return (
-    <div className={`${classes.MainCareer} ${layout.hoc}`}>
+    <div id="myStack" className={`${classes.MainCareer} ${layout.hoc}`}>
       <h2 className={classes.title}>{t("Tech Stack")}</h2>
       <div className={classes.gridContainer}>
         <Image

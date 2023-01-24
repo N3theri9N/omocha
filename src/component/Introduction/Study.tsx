@@ -6,7 +6,7 @@ import classes from "./Study.module.css";
 const Study: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <div className={`${layout.hoc} ${classes.History}`}>
+    <div id="study" className={`${layout.hoc} ${classes.History}`}>
       <h2 className={classes.title}>{t("Study")}</h2>
       <div className={layout.body}>
         <div className={layout.item}>

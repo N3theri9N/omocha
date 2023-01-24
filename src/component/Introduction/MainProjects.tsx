@@ -5,7 +5,7 @@ import layout from "./BodyLayout.module.css";
 const MainProjects: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <div className={`${classes.MainProjects} ${layout.hoc}`}>
+    <div id="mainProjects" className={`${classes.MainProjects} ${layout.hoc}`}>
       <h2 className={classes.title}>{t("MainProjectsTitle")}</h2>
       <div className={layout.body}>
         <div className={layout.item}>

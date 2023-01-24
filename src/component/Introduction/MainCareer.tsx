@@ -2,10 +2,10 @@ import { useTranslation } from "react-i18next";
 import classes from "./MainCareer.module.css";
 import layout from "./BodyLayout.module.css";
 
-const MainProjects: React.FC = () => {
+const MainCareer: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <div className={`${layout.hoc} ${classes.MainCareer}`}>
+    <div id="mainCareer" className={`${layout.hoc} ${classes.MainCareer}`}>
       <h2 className={classes.title}>{t("MainCareerTitle")}</h2>
       <div>
         <h3>N Tech Service</h3>
@@ -38,4 +38,4 @@ const MainProjects: React.FC = () => {
   );
 };
 
-export default MainProjects;
+export default MainCareer;

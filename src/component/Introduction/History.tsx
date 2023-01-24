@@ -5,7 +5,7 @@ import classes from "./History.module.css";
 const History: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <div className={`${layout.hoc} ${classes.History}`}>
+    <div id="history" className={`${layout.hoc} ${classes.History}`}>
       <h2 className={classes.title}>{t("History")}</h2>
       <div className={layout.body}>
         <div className={layout.item}>
