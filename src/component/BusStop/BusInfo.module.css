@@ -1,0 +1,20 @@
+.routeInfo {
+  width: 100%;
+}
+
+.routeInfoTable {
+  border: none;
+  border-spacing: 0px;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.routeInfoTable caption {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.routeInfoTable td {
+  width: 50%;
+}

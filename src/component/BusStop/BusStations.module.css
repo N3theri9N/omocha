@@ -1,0 +1,42 @@
+.busStations {
+  width:100%;
+}
+.busStationsTable {
+  border: none;
+  border-spacing: 0px;
+  width:100%;
+  border-collapse: collapse;
+
+}
+.busStationRow {
+  height: 50px;
+  font-size: 13px;
+  border-bottom: solid 1px rgb(128, 128, 128, 0.5);
+}
+
+.busStationName {
+  width: 60%;
+}
+.busLocation {
+  width: 35%;
+  text-align: right;
+}
+.busIcon {
+  position: absolute;
+  width: 5%;
+}
+.vetricalLine {
+  position: relative;
+  margin: auto;
+  border-left: solid 2px red;
+  border-right: solid 2px red;
+  width: 5px;
+  height: 48px;
+}
+.turningPoint { 
+  height: 30px;
+  background-color: rgb(128, 128, 128);
+  color: white;
+  font-weight: 500;
+  text-align: center;
+}

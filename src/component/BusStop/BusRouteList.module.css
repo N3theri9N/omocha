@@ -1,0 +1,22 @@
+.routeList {
+  width: 100%;
+}
+
+.routeListTable {
+  border: none;
+  border-spacing: 0px;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.routeRow {
+  height: 40px;  
+  border-bottom: solid 1px lightgray;
+}
+
+.routeRow:hover {
+  cursor: pointer;
+  background-color: lightyellow;
+}

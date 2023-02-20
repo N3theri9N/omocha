@@ -16,3 +16,19 @@ export interface BusRouteInfo {
   upFirstTime: string;
   upLastTime: string;
 }
+
+export interface BusStation {
+  stationId: string;
+  stationName: string;
+  stationSeq: string;
+  turnYn: string;
+}
+
+export interface BusLocation {
+  plateNo: string;
+  stationId: string;
+  stationSeq: string;
+  // remainSeatCnt: string;
+}
+
+export const BusAPIPrefix: string = "https://apis.data.go.kr/6410000/busrouteservice";
