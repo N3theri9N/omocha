@@ -65,7 +65,7 @@ const BusStations: React.FC<{
                   <td className={classes.busStationName}>{info.stationName}</td>
                   <td className={classes.busLocation}>{busLocation} </td>
                   <td className={classes.busIcon}>
-                    {busLocation && <Image src="/svg/redBus.svg" alt="bus" width={30} height={30} style={{marginTop: 7}} />}
+                    {busLocation && <Image src="/svg/redBus.svg" alt="bus" width={30} height={30} style={{marginTop: 5}} />}
                     <div className={classes.vetricalLine}></div>
                   </td>
                 </tr>

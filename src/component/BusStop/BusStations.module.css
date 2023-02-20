@@ -22,14 +22,19 @@
   text-align: right;
 }
 .busIcon {
-  position: absolute;
+  position: relative;
   width: 5%;
 }
 .vetricalLine {
-  position: relative;
-  margin: auto;
-  border-left: solid 2px red;
-  border-right: solid 2px red;
+  z-index: -1;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+  border-left: solid 2px orangered;
+  border-right: solid 2px orangered;
   width: 5px;
   height: 48px;
 }
