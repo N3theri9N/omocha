@@ -1,15 +1,31 @@
-import { BusRoutes, BusRouteInfo, BusStation, BusAPIPrefix } from "./model/BusStopDataTypes";
-import xmlToJson from "../../util/xmlToJson";
+import { BusRoutes, BusAPIPrefix } from "./model/BusStopDataTypes";
 import classes from "./BusRouteList.module.css";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import xmlToJson from "../../util/xmlToJson";
 // import { useRecoilState, RecoilState } from "recoil";
 
 const BusRouteList: React.FC<{
-  routeList: Array<BusRoutes>;
-  setBusRouteInfoItem: React.Dispatch<React.SetStateAction<BusRouteInfo | null>>;
-  setBusStations: React.Dispatch<React.SetStateAction<Array<BusStation>>>;
+  busNumber: string;
   setSelectedRouteId: React.Dispatch<React.SetStateAction<string>>;
-}> = ({ routeList, setBusRouteInfoItem, setBusStations, setSelectedRouteId }) => {
+}> = ({ busNumber, setSelectedRouteId }) => {
+  const [routeList, setRouteList] = useState<Array<BusRoutes>>([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (busNumber) {
+      (async () => {
+        const promise = await fetch(`${BusAPIPrefix}/getBusRouteList?serviceKey=${process.env.DATA_GO_KEY}&keyword=${busNumber}`);
+        const xmlString: string = await promise.text();
+        let XmlNode: any = xmlToJson(new DOMParser().parseFromString(xmlString, "text/xml"));
+        const result: Array<BusRoutes> = XmlNode.response?.msgBody?.busRouteList.filter((item: BusRoutes) => item.routeName === busNumber) || [];
+        setRouteList(result);
+      })();
+    }
+  }, [busNumber]);
+
   const routeClickHandler = async (routeId: string) => {
+    /* const promiseForBusRoute = await fetch(`${BusAPIPrefix}/getBusRouteInfoItem?serviceKey=${process.env.DATA_GO_KEY}&routeId=${routeId}`)
     const [promiseForBusRoute, promiseForBusStations] = await Promise.all([
       fetch(`${BusAPIPrefix}/getBusRouteInfoItem?serviceKey=${process.env.DATA_GO_KEY}&routeId=${routeId}`),
       fetch(`${BusAPIPrefix}/getBusRouteStationList?serviceKey=${process.env.DATA_GO_KEY}&routeId=${routeId}`),
@@ -24,11 +40,15 @@ const BusRouteList: React.FC<{
     const stationsData = XmlNodeStations.response.msgBody.busRouteStationList;
 
     const busRoute = ((BusRouteInfo) => BusRouteInfo)(routeData);
-    const busStations = ((BusStation) => BusStation)(stationsData);
+    const busStations = ((BusStation) => BusStation)(stationsData); */
 
     setSelectedRouteId(routeId);
-    setBusRouteInfoItem(busRoute);
-    setBusStations(busStations);
+    setRouteList([]);
+    // console.log(router)
+
+    // ToDo : 두 방식중 어떻게 해야하나 고민해볼 것!
+    // location.href=`/busstop/${routeId}`
+    router.push(`/busstop/${routeId}`);
   };
 
   return (

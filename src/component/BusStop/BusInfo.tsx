@@ -1,12 +1,34 @@
-import { BusRouteInfo } from "./model/BusStopDataTypes";
+import { BusRouteInfo, BusAPIPrefix } from "./model/BusStopDataTypes";
 import classes from "./BusInfo.module.css";
+import xmlToJson from "../../util/xmlToJson";
+import { useState, useEffect } from "react";
 
-const BusInfo: React.FC<{ routeInfo: BusRouteInfo | null }> = ({ routeInfo }) => {
+const BusInfo: React.FC<{ selectedRouteId: string }> = ({ selectedRouteId }) => {
+  const [busInfo, setBusInfo] = useState<BusRouteInfo>();
+
+  useEffect(() => {
+    if (selectedRouteId) {
+      (async () => {
+        const promise = await fetch(`${BusAPIPrefix}/getBusRouteInfoItem?serviceKey=${process.env.DATA_GO_KEY}&routeId=${selectedRouteId}`);
+        const xmlString: string = await promise.text();
+
+        let XmlNodeRoute: any = xmlToJson(new DOMParser().parseFromString(xmlString, "text/xml"));
+        console.log(XmlNodeRoute);
+        const routeData = XmlNodeRoute.response.msgBody.busRouteInfoItem;
+
+        const busRoute = ((BusRouteInfo) => BusRouteInfo)(routeData);
+        setBusInfo(busRoute);
+      })();
+    } else {
+      setBusInfo(undefined);
+    }
+  }, [selectedRouteId]);
+
   return (
     <div className={classes.routeInfo}>
-      {routeInfo && (
+      {busInfo && (
         <table className={classes.routeInfoTable}>
-          <caption>버스 번호 : {routeInfo.routeName}</caption>
+          <caption>{busInfo.routeName} 번 버스</caption>
           <thead>
             <tr>
               <th>기점</th>
@@ -15,12 +37,16 @@ const BusInfo: React.FC<{ routeInfo: BusRouteInfo | null }> = ({ routeInfo }) =>
           </thead>
           <tbody>
             <tr>
-              <td>{routeInfo.startStationName}</td>
-              <td>{routeInfo.endStationName}</td>
+              <td>{busInfo.startStationName}</td>
+              <td>{busInfo.endStationName}</td>
             </tr>
             <tr>
-              <td>{routeInfo.upFirstTime} - {routeInfo.upLastTime}</td>
-              <td>{routeInfo.downFirstTime} - {routeInfo.downLastTime}</td>
+              <td>
+                {busInfo.upFirstTime} - {busInfo.upLastTime}
+              </td>
+              <td>
+                {busInfo.downFirstTime} - {busInfo.downLastTime}
+              </td>
             </tr>
           </tbody>
         </table>

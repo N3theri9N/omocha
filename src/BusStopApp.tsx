@@ -3,10 +3,10 @@ import {
   RecoilRoot
 } from 'recoil';
 
-const BusStopApp: React.FC = () => {
+const BusStopApp: React.FC <{routeId:string}>= ({routeId = ""}) => {
   return (
     <RecoilRoot>
-      <BusStopLayout />
+      <BusStopLayout routeId={routeId} />
     </RecoilRoot>
   );
 };

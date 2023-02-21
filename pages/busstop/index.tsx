@@ -1,7 +1,7 @@
 import BusStopApp from "../../src/BusStopApp"
 
 const index:React.FC = () => {
-  return <BusStopApp/>
+  return <BusStopApp routeId="" />
 }
 
 export default index;
