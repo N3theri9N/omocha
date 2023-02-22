@@ -41,7 +41,7 @@ const SelectedStations: React.FC<{
     <>
     { alarmSize > 0 && 
       <div className={classes.bottomLayout}>
-        <div className={classes.bottomLabel}>{`선택된 정류장 : ${alarmStation.size} 개`}</div>}
+        <div className={classes.bottomLabel}>{`선택된 정류장 : ${alarmStation.size} 개`}</div>
         <div className={classes.bottomContent}>
           {[...alarmStation.keys()].map((key) => {
             const station: BusStation | undefined = alarmStation.get(key);
