@@ -15,8 +15,10 @@ import classes from "./BusStopLayout.module.css";
 const BusStopLayout: React.FC<{routeId:string}> = ({routeId}) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const [selectedRouteId, setSelectedRouteId] = useState<string>(routeId);
-  const [inputBusNumber, setInputBusNumber] = useState<string>("");
+  const [ selectedRouteId, setSelectedRouteId] = useState<string>(routeId);
+  const [ selectedRouteName, setSelectedRouteName ] = useState<string>("");
+  const [ inputBusNumber, setInputBusNumber] = useState<string>("");
+  
 
   const router = useRouter();
   const dynamicRoute = router.asPath;
@@ -39,8 +41,8 @@ const BusStopLayout: React.FC<{routeId:string}> = ({routeId}) => {
       <BusSubmitForm submitHandler={submitHandler} inputRef={inputRef} />
       <div className={classes.layoutBody}>
         <BusRouteList setSelectedRouteId={setSelectedRouteId} busNumber={inputBusNumber} />
-        <BusInfo selectedRouteId={selectedRouteId} />
-        <BusStations selectedRouteId={selectedRouteId} />
+        <BusInfo selectedRouteId={selectedRouteId} setSelectedRouteName={setSelectedRouteName} />
+        <BusStations selectedRouteId={selectedRouteId} selectedRouteName={selectedRouteName} />
       </div>
     </div>
   );

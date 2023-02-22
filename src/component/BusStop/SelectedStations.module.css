@@ -1,0 +1,48 @@
+.bottomLayout {
+  color: white;
+  background-color: teal;
+  width:100%;
+  margin-right: 10%;
+  max-width: 600px;
+  max-height: 300px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position:fixed;
+  bottom : 0;
+  overflow: auto;
+}
+.bottomLabel {
+  border-bottom: solid 1px white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding:15px;
+  
+  max-width:600px;
+  width:90%;
+  position:fixed;
+  background-color: teal;
+}
+.bottomContent {
+  margin-top:30px;
+}
+.selectedRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 400; 
+  padding: 10px;
+  margin:auto;
+  border-bottom: solid 1px white;
+}
+
+.selectedRow button {
+  background-color: teal;
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  width:30px;
+  height:30px;
+  border-radius: 15px;
+  cursor: pointer;
+  border: solid 2px white;
+}

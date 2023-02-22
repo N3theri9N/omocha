@@ -3,7 +3,7 @@ import classes from "./BusInfo.module.css";
 import xmlToJson from "../../util/xmlToJson";
 import { useState, useEffect } from "react";
 
-const BusInfo: React.FC<{ selectedRouteId: string }> = ({ selectedRouteId }) => {
+const BusInfo: React.FC<{ selectedRouteId: string, setSelectedRouteName:React.Dispatch<React.SetStateAction<string>> }> = ({ selectedRouteId, setSelectedRouteName }) => {
   const [busInfo, setBusInfo] = useState<BusRouteInfo>();
 
   useEffect(() => {
@@ -13,10 +13,10 @@ const BusInfo: React.FC<{ selectedRouteId: string }> = ({ selectedRouteId }) => 
         const xmlString: string = await promise.text();
 
         let XmlNodeRoute: any = xmlToJson(new DOMParser().parseFromString(xmlString, "text/xml"));
-        console.log(XmlNodeRoute);
         const routeData = XmlNodeRoute.response.msgBody.busRouteInfoItem;
 
         const busRoute = ((BusRouteInfo) => BusRouteInfo)(routeData);
+        setSelectedRouteName(busRoute.routeName);
         setBusInfo(busRoute);
       })();
     } else {

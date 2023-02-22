@@ -22,6 +22,7 @@ export interface BusStation {
   stationName: string;
   stationSeq: string;
   turnYn: string;
+  routeName?: string;
 }
 
 export interface BusLocation {

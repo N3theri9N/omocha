@@ -1,5 +1,6 @@
 import { BusStation, BusLocation, BusAPIPrefix } from "./model/BusStopDataTypes";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect, useCallback } from "react";
+import SelectedStations from "./SelectedStations";
 import xmlToJson from "../../util/xmlToJson";
 import classes from "./BusStations.module.css";
 import Image from "next/image";
@@ -7,7 +8,8 @@ import Image from "next/image";
 
 const BusStations: React.FC<{
   selectedRouteId: string;
-}> = ({ selectedRouteId }) => {
+  selectedRouteName: string;
+}> = ({ selectedRouteId, selectedRouteName }) => {
   const [busLocationList, setBusLocationList] = useState<Array<BusLocation>>([]);
   const [busStationList, setBusStationList] = useState<Array<BusStation>>([]);
   const [alarmStation, setAlarmStation] = useState<Map<string, BusStation>>(new Map<string, BusStation>());
@@ -42,6 +44,7 @@ const BusStations: React.FC<{
           },
         ];
       }
+      // console.log(result);
       setBusLocationList(result);
     };
 
@@ -60,6 +63,7 @@ const BusStations: React.FC<{
       clearInterval(interval);
     };
   }, [selectedRouteId]);
+
   let busLocationObject = new Array(busStationList.length);
   busLocationList.forEach((loc) => {
     const idx: number = parseInt(loc.stationSeq);
@@ -69,16 +73,17 @@ const BusStations: React.FC<{
   const addStationHandler = (station: BusStation): void => {
     const key = `${selectedRouteId}_${station.stationSeq}`;
     setAlarmStation((prev) => {
-      console.log(prev);
-      return prev.set(key, station);
+      prev.set(key, station);
+      return new Map(prev);
     });
   };
-  const removeStationHandler = (key: string):void => {
+
+  const removeStationHandler = useCallback((key: string): void => {
     setAlarmStation((prev) => {
-      prev.delete(key)
-      return prev;
-    })
-  }
+      prev.delete(key);
+      return new Map(prev);
+    });
+  }, []);
 
   return (
     <>
@@ -89,7 +94,7 @@ const BusStations: React.FC<{
               const busLocation = busLocationObject[idx];
               return (
                 <Fragment key={info.stationSeq}>
-                  <tr className={classes.busStationRow} key={info.stationSeq} onClick={() => addStationHandler(info)}>
+                  <tr className={classes.busStationRow} key={info.stationSeq} onClick={() => addStationHandler({ ...info, routeName: selectedRouteName })}>
                     <td className={classes.busStationName}>{info.stationName}</td>
                     <td className={classes.busLocation}>{busLocation} </td>
                     <td className={classes.busIcon}>
@@ -108,19 +113,7 @@ const BusStations: React.FC<{
           </tbody>
         </table>
       </div>
-      <div className={classes.bottom}>
-        {[...alarmStation.keys()].map((key) => {
-          const station: BusStation | undefined = alarmStation.get(key);
-          if (station) {
-            return (
-              <div key={key} className={classes.selectedRow}>
-                <div>{station.stationName}</div>
-                <div><button onClick={() => removeStationHandler(key)}>X</button></div>
-              </div>
-            );
-          }
-        })}
-      </div>
+      <SelectedStations alarmStation={alarmStation} removeStationHandler={removeStationHandler} />
     </>
   );
 };

@@ -18,8 +18,26 @@ const BusRouteList: React.FC<{
         const promise = await fetch(`${BusAPIPrefix}/getBusRouteList?serviceKey=${process.env.DATA_GO_KEY}&keyword=${busNumber}`);
         const xmlString: string = await promise.text();
         let XmlNode: any = xmlToJson(new DOMParser().parseFromString(xmlString, "text/xml"));
-        const result: Array<BusRoutes> = XmlNode.response?.msgBody?.busRouteList.filter((item: BusRoutes) => item.routeName === busNumber) || [];
-        setRouteList(result);
+        let result: Array<BusRoutes> | BusRoutes = XmlNode.response?.msgBody?.busRouteList || [];
+        
+        const isBusRoute = (object: any): object is BusRoutes => {
+          return "routeId" in object;
+        };
+
+        if (isBusRoute(result)) {
+          result = [
+            {
+              districtCd: result.districtCd,
+              regionName: result.regionName,
+              routeId: result.routeId,
+              routeName: result.routeName,
+              routeTypeCd: result.routeTypeCd,
+              routeTypeName: result.routeTypeName,
+            },
+          ];
+        }
+
+        setRouteList(result.filter((item: BusRoutes) => item.routeName === busNumber));
       })();
     }
   }, [busNumber]);
