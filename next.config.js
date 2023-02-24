@@ -5,6 +5,7 @@ const nextConfig = {
   swcMinify: true,
   env: {
     CRYPTO_KEY: process.env.CRYPTO_KEY,
+    DATA_GO_KEY: process.env.DATA_GO_KEY,
   },
   i18n,
 }

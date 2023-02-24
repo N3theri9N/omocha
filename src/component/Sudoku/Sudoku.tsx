@@ -35,7 +35,7 @@ const Sudoku: React.FC<{ question: string; questionId: string }> = ({
 
   useEffect( () =>{
     savedData.puzzleData = [...INITIAL_PUZZLE_DATA];
-  }, []);
+  }, [INITIAL_PUZZLE_DATA]);
 
   const savePuzzleData = ():void => {
     savedData.puzzleData = [...puzzleData];

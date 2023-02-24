@@ -1,0 +1,48 @@
+.layoutHead {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  background-color: teal;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 100%;
+  height: 50px;
+  display:flex;
+}
+
+.busForm {  
+  margin:auto;
+}
+
+.layoutBody {
+  width: 90%;
+  max-width: 600px;
+  padding-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.busForm * {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  height: 30px;
+}
+
+.textInput {
+  font-size: 18px;
+  text-align: center;
+  width: 100px;
+}
+
+.textInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.submitButton {
+  color: teal;
+  background-color: white;
+  border-left: solid 1px teal;
+  width: 50px;
+}
