@@ -1,4 +1,5 @@
 import { BusStation, BusLocation, BusAPIPrefix } from "./model/BusStopDataTypes";
+import OneSignal from 'react-onesignal';
 import React, { Fragment, useState, useEffect, useCallback } from "react";
 import SelectedStations from "./SelectedStations";
 import xmlToJson from "../../util/xmlToJson";
@@ -13,6 +14,9 @@ const BusStations: React.FC<{
   const [busLocationList, setBusLocationList] = useState<Array<BusLocation>>([]);
   const [busStationList, setBusStationList] = useState<Array<BusStation>>([]);
   const [alarmStation, setAlarmStation] = useState<Map<string, BusStation>>(new Map<string, BusStation>());
+  
+
+  OneSignal.init({ appId: '3ea19a6b-bb93-4d9d-a3d1-1c30f69051d2', allowLocalhostAsSecureOrigin: true });
 
   useEffect(() => {
     let interval: NodeJS.Timer;
@@ -44,7 +48,6 @@ const BusStations: React.FC<{
           },
         ];
       }
-      // console.log(result);
       setBusLocationList(result);
     };
 
@@ -71,7 +74,7 @@ const BusStations: React.FC<{
   });
 
   const addStationHandler = (station: BusStation): void => {
-    const key = `${selectedRouteId}_${station.stationSeq}`;
+    const key = `${selectedRouteId}_${station.stationId}`;
     setAlarmStation((prev) => {
       prev.set(key, station);
       return new Map(prev);
