@@ -32,9 +32,29 @@ const SelectedStations: React.FC<{
             const key = params[idx];
             const stat: BusStation | undefined = alarmStation.get(key);
             if(stat?.routeName && stat?.stationName){
-
               console.log(`${stat.routeName} 번 버스가 ${result} 분 후 ${stat.stationName}에 도착합니다.`);
+              
+              // clientID : "f4db68147778bb85d8957f12ebc307b2";
+              // const payload = {
+              //   template_object : {
+              //     "object_type":"text",
+              //     "text":`${stat.routeName} 번 버스가 ${result} 분 후 ${stat.stationName}에 도착합니다.`,
+              //     "link":{
+              //        "web_url":"https://omocha-nine.vercel.app/busstop",
+              //        "mobile_web_url":"https://omocha-nine.vercel.app/busstop"
+              //     }
+              //  }
+              // }
+              // await fetch("https://kapi.kakao.com/v2/api/talk/memo/default/send", {
+              //   method: "POST",
+              //   headers: {
+              //     "Content_Type": "application/x-www-form-urlencoded",
+              //     // "Authentication": `Bearer ${token}`
+              //   },
+              //   body: JSON.stringify(payload),
+              // })
               removeStationHandler(key);
+
             }
           }
         });
