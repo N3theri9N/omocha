@@ -1,7 +1,5 @@
 import BusStopLayout from "./component/BusStop/BusStopLayout";
-import {
-  RecoilRoot
-} from 'recoil';
+import { RecoilRoot } from 'recoil';
 
 const BusStopApp: React.FC <{routeId:string}>= ({routeId = ""}) => {
   return (

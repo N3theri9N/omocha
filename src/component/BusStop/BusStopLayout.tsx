@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/router";
+import React, { useRef, useState } from "react";
 import BusRouteList from "./BusRouteList";
 import BusStations from "./BusStations";
 import BusInfo from "./BusInfo";
 import classes from "./BusStopLayout.module.css";
 
-// import { atom, RecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
+import { selectedBusState } from "../../store/bus-stop-alarm";
 
 // const globalRouteId: RecoilState<string> = atom({
 //   key: "globalRouteId",
@@ -15,24 +15,17 @@ import classes from "./BusStopLayout.module.css";
 const BusStopLayout: React.FC<{routeId:string}> = ({routeId}) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const [ selectedRouteId, setSelectedRouteId] = useState<string>(routeId);
-  const [ selectedRouteName, setSelectedRouteName ] = useState<string>("");
-  const [ inputBusNumber, setInputBusNumber] = useState<string>("");
-  
+  const setSelectedBus = useSetRecoilState(selectedBusState);
 
-  const router = useRouter();
-  const dynamicRoute = router.asPath;
-  useEffect(() => {
-    setSelectedRouteId(routeId)
-  }, [dynamicRoute])
+  const [ inputBusNumber, setInputBusNumber] = useState<string>("");
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSelectedRouteId("");
     let busNumber: string = "";
     if (inputRef.current) {
       busNumber = inputRef.current.value;
     }
+    setSelectedBus({busName: "", routeId: ""});
     setInputBusNumber(busNumber);
   };
 
@@ -40,9 +33,9 @@ const BusStopLayout: React.FC<{routeId:string}> = ({routeId}) => {
     <div>
       <BusSubmitForm submitHandler={submitHandler} inputRef={inputRef} />
       <div className={classes.layoutBody}>
-        <BusRouteList setSelectedRouteId={setSelectedRouteId} busNumber={inputBusNumber} />
-        <BusInfo selectedRouteId={selectedRouteId} setSelectedRouteName={setSelectedRouteName} />
-        <BusStations selectedRouteId={selectedRouteId} selectedRouteName={selectedRouteName} />
+        <BusRouteList busNumber={inputBusNumber} />
+        <BusInfo routeId={routeId} />
+        <BusStations />
       </div>
     </div>
   );

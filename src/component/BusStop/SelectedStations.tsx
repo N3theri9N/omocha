@@ -59,7 +59,7 @@ const SelectedStations: React.FC<{
           }
         });
 
-      }, 10000);
+      }, 30000);
     }
     return () => {
       clearInterval(interval);

@@ -1,25 +1,24 @@
 import { BusRoutes, BusAPIPrefix } from "./model/BusStopDataTypes";
 import classes from "./BusRouteList.module.css";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import xmlToJson from "../../util/xmlToJson";
-// import { useRecoilState, RecoilState } from "recoil";
 
 const BusRouteList: React.FC<{
   busNumber: string;
-  setSelectedRouteId: React.Dispatch<React.SetStateAction<string>>;
-}> = ({ busNumber, setSelectedRouteId }) => {
+}> = ({ busNumber }) => {
   const [routeList, setRouteList] = useState<Array<BusRoutes>>([]);
   const router = useRouter();
 
   useEffect(() => {
     if (busNumber) {
       (async () => {
+        setRouteList([]);
         const promise = await fetch(`${BusAPIPrefix}/getBusRouteList?serviceKey=${process.env.DATA_GO_KEY}&keyword=${busNumber}`);
         const xmlString: string = await promise.text();
         let XmlNode: any = xmlToJson(new DOMParser().parseFromString(xmlString, "text/xml"));
         let result: Array<BusRoutes> | BusRoutes = XmlNode.response?.msgBody?.busRouteList || [];
-        
+
         const isBusRoute = (object: any): object is BusRoutes => {
           return "routeId" in object;
         };
@@ -43,29 +42,12 @@ const BusRouteList: React.FC<{
   }, [busNumber]);
 
   const routeClickHandler = async (routeId: string) => {
-    /* const promiseForBusRoute = await fetch(`${BusAPIPrefix}/getBusRouteInfoItem?serviceKey=${process.env.DATA_GO_KEY}&routeId=${routeId}`)
-    const [promiseForBusRoute, promiseForBusStations] = await Promise.all([
-      fetch(`${BusAPIPrefix}/getBusRouteInfoItem?serviceKey=${process.env.DATA_GO_KEY}&routeId=${routeId}`),
-      fetch(`${BusAPIPrefix}/getBusRouteStationList?serviceKey=${process.env.DATA_GO_KEY}&routeId=${routeId}`),
-    ]);
-    const xmlStringRoute: string = await promiseForBusRoute.text();
-    const xmlStringStations: string = await promiseForBusStations.text();
-
-    let XmlNodeRoute: any = xmlToJson(new DOMParser().parseFromString(xmlStringRoute, "text/xml"));
-    let XmlNodeStations: any = xmlToJson(new DOMParser().parseFromString(xmlStringStations, "text/xml"));
-
-    const routeData = XmlNodeRoute.response.msgBody.busRouteInfoItem;
-    const stationsData = XmlNodeStations.response.msgBody.busRouteStationList;
-
-    const busRoute = ((BusRouteInfo) => BusRouteInfo)(routeData);
-    const busStations = ((BusStation) => BusStation)(stationsData); */
-
-    setSelectedRouteId(routeId);
+    // setSelectedRouteId(routeId);
+    // setSelectedBus({
+    //   routeId,
+    //   busName: busNumber,
+    // });
     setRouteList([]);
-    // console.log(router)
-
-    // ToDo : 두 방식중 어떻게 해야하나 고민해볼 것!
-    // location.href=`/busstop/${routeId}`
     router.push(`/busstop/${routeId}`);
   };
 
