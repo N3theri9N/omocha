@@ -4,14 +4,16 @@ import SelectedStations from "./SelectedStations";
 import xmlToJson from "../../util/xmlToJson";
 import classes from "./BusStations.module.css";
 import Image from "next/image";
-import { selectedBusState } from "../../store/bus-stop-alarm";
-import { useRecoilValue } from "recoil";
+import { alarmBusStation, selectedBusState } from "../../store/bus-stop-alarm";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const BusStations: React.FC<{}> = () => {
   const [busLocationList, setBusLocationList] = useState<Array<BusLocation>>([]);
   const [busStationList, setBusStationList] = useState<Array<BusStation>>([]);
-  const [alarmStation, setAlarmStation] = useState<Map<string, BusStation>>(new Map<string, BusStation>());
+  // const [alarmStation, setAlarmStation] = useState<Map<string, BusStation>>(new Map<string, BusStation>());
+
   const selectedBus = useRecoilValue(selectedBusState);
+  const setAlarmStation = useSetRecoilState(alarmBusStation);
 
   useEffect(() => {
     let interval: NodeJS.Timer;
@@ -85,13 +87,6 @@ const BusStations: React.FC<{}> = () => {
     });
   };
 
-  const removeStationHandler = useCallback((key: string): void => {
-    setAlarmStation((prev) => {
-      prev.delete(key);
-      return new Map(prev);
-    });
-  }, []);
-
   return (
     <>
       <div className={classes.busStations}>
@@ -120,7 +115,6 @@ const BusStations: React.FC<{}> = () => {
           </tbody>
         </table>
       </div>
-      <SelectedStations alarmStation={alarmStation} removeStationHandler={removeStationHandler} />
     </>
   );
 };

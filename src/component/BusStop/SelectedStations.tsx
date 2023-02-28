@@ -1,17 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import classes from "./SelectedStations.module.css";
 import { BusStation } from "./model/BusStopDataTypes";
 import xmlToJson from "../../util/xmlToJson";
+import { useRecoilState } from "recoil";
+import { alarmBusStation } from "../../store/bus-stop-alarm";
 
-const SelectedStations: React.FC<{
-  alarmStation: Map<string, BusStation>;
-  removeStationHandler: Function;
-}> = ({ alarmStation, removeStationHandler }) => {
+const SelectedStations: React.FC = () => {
   // (async function runOneSignal (){
   //   await OneSignal.init({ appId: '3ea19a6b-bb93-4d9d-a3d1-1c30f69051d2', allowLocalhostAsSecureOrigin: true });
   //   OneSignal.showSlidedownPrompt();
   // })(); 
   //  safari_web_id: "web.onesignal.auto.57017041-c410-4b69-86f6-455278402f0c",
+  
+  const [ alarmStation, setAlarmStation ] = useRecoilState(alarmBusStation);
+  const [ contentsVisible, setContentsVisible ] = useState<boolean>(false);
+
+  const removeStationHandler = (key: string): void => {
+    setAlarmStation((prev) => {
+      prev.delete(key);
+      return new Map(prev);
+    });
+  };
+
+  const toggleVisible = () => {
+    setContentsVisible(prev => !prev);
+  }
+
+  
   useEffect(() => {
     let interval: NodeJS.Timer;
 
@@ -71,7 +86,8 @@ const SelectedStations: React.FC<{
     <>
       {alarmSize > 0 && (
         <div className={classes.bottomLayout}>
-          <div className={classes.bottomLabel}>{`선택된 정류장 : ${alarmStation.size} 개`}</div>
+          <div className={classes.bottomLabel} onClick={toggleVisible}>{`선택된 정류장 : ${alarmStation.size} 개`}</div>
+          {contentsVisible && 
           <div className={classes.bottomContent}>
             {[...alarmStation.keys()].map((key) => {
               const station: BusStation | undefined = alarmStation.get(key);
@@ -88,6 +104,7 @@ const SelectedStations: React.FC<{
               }
             })}
           </div>
+}
         </div>
       )}
     </>

@@ -1,48 +1,51 @@
 .bottomLayout {
+  position:fixed;
+  z-index: 100;
   color: white;
   background-color: teal;
-  width:100%;
-  margin-right: 10%;
-  max-width: 600px;
-  max-height: 300px;
+  
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  position:fixed;
+  
+  width:100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-width: 600px;
   bottom : 0;
-  overflow: auto;
 }
 .bottomLabel {
+  width: 100%; 
   border-bottom: solid 1px white;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding:15px;
-  
-  max-width:600px;
-  width:100%;
-  position:fixed;
   background-color: teal;
+  cursor: pointer;
 }
+
 .bottomContent {
-  margin-top:52px;
+  overflow:auto;
+  max-height: 200px;
+  scrollbar-color: white white;
 }
+
 .selectedRow {
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
-  font-weight: 400; 
+  font-size: 16px;
+  font-weight: 500; 
   padding: 10px;
-  margin:auto;
+  /* margin:auto; */
   border-bottom: solid 1px white;
 }
-
 .selectedRow button {
   background-color: teal;
   color: white;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 400;
-  width:30px;
-  height:30px;
-  border-radius: 15px;
+  width:26px;
+  height:26px;
+  border-radius: 13px;
   cursor: pointer;
   border: solid 2px white;
 }

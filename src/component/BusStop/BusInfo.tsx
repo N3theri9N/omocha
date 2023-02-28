@@ -1,38 +1,39 @@
-import { BusRouteInfo } from "./model/BusStopDataTypes";
 import classes from "./BusInfo.module.css";
-import React, { useState, useEffect } from "react";
-import { useSetRecoilState } from "recoil";
-import { selectedBusState } from "../../store/bus-stop-alarm";
+import { useState, useEffect } from "react";
+import { BusRouteInfo, BusAPIPrefix } from "./model/BusStopDataTypes";
 
-const BusInfo: React.FC<{routeId: string}> = ({ routeId }) => {
-  const [ busInfo, setBusInfo ] = useState<BusRouteInfo|null>(null);
-  const setSelectedBus = useSetRecoilState(selectedBusState);
+import { useRecoilState } from "recoil";
+import { selectedBusState } from "../../store/bus-stop-alarm";
+import xmlToJson from "../../util/xmlToJson";
+
+const BusInfo: React.FC = () => {
+  const [busInfo, setBusInfo] = useState<BusRouteInfo>();
+  const [selectedBus, setSelectedBus] = useRecoilState(selectedBusState);
 
   useEffect(() => {
     const fetchBusInfo = async () => {
-      setBusInfo(null);
       console.log("BUSINFO API IS RUNNING");
-      const promise = await fetch(`/api/busstop/busInfo/${routeId}`);
-      const busRoute = await promise.json();
+      // const promise = await fetch(`/api/busstop/busInfo/${routeId}`);
+      // const busRoute = await promise.json();
 
-      // const promise = await fetch(`${BusAPIPrefix}/getBusRouteInfoItem?serviceKey=${process.env.DATA_GO_KEY}&routeId=${selectedBus.routeId}`);
-      // const xmlString: string = await promise.text();
-      // let XmlNodeRoute: any = xmlToJson(new DOMParser().parseFromString(xmlString, "text/xml"));
-      // const routeData = XmlNodeRoute.response.msgBody.busRouteInfoItem;
-      // const busRoute = ((BusRouteInfo) => BusRouteInfo)(routeData);
+      const promise = await fetch(`${BusAPIPrefix}/getBusRouteInfoItem?serviceKey=${process.env.DATA_GO_KEY}&routeId=${selectedBus.routeId}`);
+      const xmlString: string = await promise.text();
+      let XmlNodeRoute: any = xmlToJson(new DOMParser().parseFromString(xmlString, "text/xml"));
+      const routeData = XmlNodeRoute.response.msgBody.busRouteInfoItem;
+      const busRoute = ((BusRouteInfo) => BusRouteInfo)(routeData);
 
       setSelectedBus({
-        routeId,
+        routeId: selectedBus.routeId,
         busName: busRoute.routeName,
       });
       setBusInfo(busRoute);
-    }
-    if (routeId) {
+    };
+    if (selectedBus.routeId) {
       fetchBusInfo();
     } else {
-      setBusInfo(null);
+      setBusInfo(undefined);
     }
-  }, [routeId]);
+  }, [selectedBus.routeId]);
 
   return (
     <div className={classes.routeInfo}>
