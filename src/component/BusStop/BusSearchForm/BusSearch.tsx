@@ -1,7 +1,7 @@
 import classes from "./BusSearch.module.css";
 import { useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
-import { selectedBusState } from "../../store/bus-stop-alarm";
+import { selectedBusState } from "../../../store/bus-stop-alarm";
 import BusRouteList from "./BusRouteList";
 
 const BusSearch: React.FC = () => {

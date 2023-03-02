@@ -3,7 +3,7 @@ import BusInfo from "./BusInfo";
 import classes from "./MainContents.module.css";
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { selectedBusState } from "../../store/bus-stop-alarm";
+import { selectedBusState } from "../../../store/bus-stop-alarm";
 
 const MainContents: React.FC<{ routeId: string }> = ({ routeId }) => {
   const [selectedBus, setSelectedBus] = useRecoilState(selectedBusState);

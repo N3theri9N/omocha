@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import classes from "./SelectedStations.module.css";
-import { BusStation } from "./model/BusStopDataTypes";
-import xmlToJson from "../../util/xmlToJson";
+import { BusStation } from "../model/BusStopDataTypes";
+import xmlToJson from "../../../util/xmlToJson";
 import { useRecoilState } from "recoil";
-import { alarmBusStation } from "../../store/bus-stop-alarm";
+import { alarmBusStation } from "../../../store/bus-stop-alarm";
+
+import { getMessaging, onMessage } from "firebase/messaging";
 
 const SelectedStations: React.FC = () => {
   // (async function runOneSignal (){
@@ -47,6 +49,7 @@ const SelectedStations: React.FC = () => {
             const key = params[idx];
             const stat: BusStation | undefined = alarmStation.get(key);
             if(stat?.routeName && stat?.stationName){
+              
               console.log(`${stat.routeName} 번 버스가 ${result} 분 후 ${stat.stationName}에 도착합니다.`);
               
               // clientID : "f4db68147778bb85d8957f12ebc307b2";

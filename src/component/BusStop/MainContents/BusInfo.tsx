@@ -1,10 +1,10 @@
 import classes from "./BusInfo.module.css";
 import { useState, useEffect } from "react";
-import { BusRouteInfo, BusAPIPrefix } from "./model/BusStopDataTypes";
+import { BusRouteInfo, BusAPIPrefix } from "../model/BusStopDataTypes";
 
 import { useRecoilState } from "recoil";
-import { selectedBusState } from "../../store/bus-stop-alarm";
-import xmlToJson from "../../util/xmlToJson";
+import { selectedBusState } from "../../../store/bus-stop-alarm";
+import xmlToJson from "../../../util/xmlToJson";
 
 const BusInfo: React.FC = () => {
   const [busInfo, setBusInfo] = useState<BusRouteInfo>();
@@ -12,7 +12,7 @@ const BusInfo: React.FC = () => {
 
   useEffect(() => {
     const fetchBusInfo = async () => {
-      console.log("BUSINFO API IS RUNNING");
+      // console.log("BUSINFO API IS RUNNING");
       // const promise = await fetch(`/api/busstop/busInfo/${routeId}`);
       // const busRoute = await promise.json();
 

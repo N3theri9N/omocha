@@ -1,8 +1,8 @@
-import { BusRoutes, BusAPIPrefix } from "./model/BusStopDataTypes";
+import { BusRoutes, BusAPIPrefix } from "../model/BusStopDataTypes";
 import classes from "./BusRouteList.module.css";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import xmlToJson from "../../util/xmlToJson";
+import xmlToJson from "../../../util/xmlToJson";
 
 const BusRouteList: React.FC<{
   busNumber: string;

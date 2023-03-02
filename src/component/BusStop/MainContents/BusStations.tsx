@@ -1,10 +1,9 @@
-import { BusStation, BusLocation, BusAPIPrefix } from "./model/BusStopDataTypes";
+import { BusStation, BusLocation, BusAPIPrefix } from "../model/BusStopDataTypes";
 import React, { Fragment, useState, useEffect, useCallback } from "react";
-import SelectedStations from "./SelectedStations";
-import xmlToJson from "../../util/xmlToJson";
+import xmlToJson from "../../../util/xmlToJson";
 import classes from "./BusStations.module.css";
 import Image from "next/image";
-import { alarmBusStation, selectedBusState } from "../../store/bus-stop-alarm";
+import { alarmBusStation, selectedBusState } from "../../../store/bus-stop-alarm";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const BusStations: React.FC<{}> = () => {
@@ -19,7 +18,7 @@ const BusStations: React.FC<{}> = () => {
     let interval: NodeJS.Timer;
 
     const fetchBusStations = async () => {
-      console.log("BusStations API RUNNING");
+      // console.log("BusStations API RUNNING");
 
       // 바로 불러오기 : ETag 가 없어 캐싱이 되지 않는다.
       const promise = await fetch(`${BusAPIPrefix}/getBusRouteStationList?serviceKey=${process.env.DATA_GO_KEY}&routeId=${selectedBus.routeId}`);
