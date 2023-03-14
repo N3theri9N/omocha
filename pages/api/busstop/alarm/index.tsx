@@ -2,8 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const admin = require("firebase-admin");
-  const serviceAccount = require("./serviceAccountKey.json");
-  
+  const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT||"{}");
+  // console.log(serviceAccount);
   if (admin.INTERNAL.appStore?.appStore?.size < 1) {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount)
@@ -12,9 +12,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   switch (req.method) {
     case "POST": {
-      console.log(req.body);
+      // console.log(req.body);
       const { token, message } = JSON.parse(req.body);
-      console.log(token,message);
+      // console.log(token,message);
       const payload = {
         notification: {
           title: "BusStopAlarm",

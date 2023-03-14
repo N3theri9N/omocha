@@ -6,7 +6,7 @@ import Image from "next/image";
 import { alarmBusStation, selectedBusState } from "../../../store/bus-stop-alarm";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
-const BusStations: React.FC<{}> = () => {
+const BusStations = (): JSX.Element => {
   const [busLocationList, setBusLocationList] = useState<Array<BusLocation>>([]);
   const [busStationList, setBusStationList] = useState<Array<BusStation>>([]);
   // const [alarmStation, setAlarmStation] = useState<Map<string, BusStation>>(new Map<string, BusStation>());

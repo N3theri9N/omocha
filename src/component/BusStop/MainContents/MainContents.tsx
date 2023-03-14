@@ -5,13 +5,15 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { selectedBusState } from "../../../store/bus-stop-alarm";
 
-const MainContents: React.FC<{ routeId: string }> = ({ routeId }) => {
+type MainContentsProps = { routeId: string };
+
+function MainContents({ routeId }: MainContentsProps): JSX.Element {
   const [selectedBus, setSelectedBus] = useRecoilState(selectedBusState);
 
   useEffect(() => {
-    setSelectedBus({routeId: routeId, busName: ""});
-  }, [routeId])
-  
+    setSelectedBus({ routeId: routeId, busName: "" });
+  }, [routeId]);
+
   return (
     <>
       {selectedBus.routeId && (
@@ -22,6 +24,6 @@ const MainContents: React.FC<{ routeId: string }> = ({ routeId }) => {
       )}
     </>
   );
-};
+}
 
 export default MainContents;

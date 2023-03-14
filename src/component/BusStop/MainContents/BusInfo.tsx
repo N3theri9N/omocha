@@ -6,7 +6,7 @@ import { useRecoilState } from "recoil";
 import { selectedBusState } from "../../../store/bus-stop-alarm";
 import xmlToJson from "../../../util/xmlToJson";
 
-const BusInfo: React.FC = () => {
+const BusInfo = (): JSX.Element => {
   const [busInfo, setBusInfo] = useState<BusRouteInfo>();
   const [selectedBus, setSelectedBus] = useRecoilState(selectedBusState);
 

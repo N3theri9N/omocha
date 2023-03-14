@@ -5,9 +5,11 @@ import xmlToJson from "../../../util/xmlToJson";
 import { useRecoilState } from "recoil";
 import { alarmBusStation } from "../../../store/bus-stop-alarm";
 
-import { getMessaging, onMessage } from "firebase/messaging";
+type SelectedStationsProps = {
+  deviceToken: string;
+}
 
-const SelectedStations: React.FC = () => {
+function SelectedStations ({deviceToken} : SelectedStationsProps ) :JSX.Element {
   // (async function runOneSignal (){
   //   await OneSignal.init({ appId: '3ea19a6b-bb93-4d9d-a3d1-1c30f69051d2', allowLocalhostAsSecureOrigin: true });
   //   OneSignal.showSlidedownPrompt();
@@ -51,7 +53,7 @@ const SelectedStations: React.FC = () => {
               window.navigator.sendBeacon(
                 "/api/busstop/alarm",
                 JSON.stringify({
-                  token: "fQn3I7mbe1AooFWuR-DSAM:APA91bEVUmIs-Mg3tYki4-kdkqBmtrzC_adq3lvsVU8-sqXkTz0h0n7OaEEQsUZsqLYpgQ7l3brp9tupMgr_LXl3z9tSqj4iQBuv8iVlljNh6wWo1aLPCa98Z8zqXBWuYOzcI3mPASBL",
+                  token: deviceToken,
                   message: `${stat.routeName} 번 버스가 ${result} 분 후 ${stat.stationName}에 도착합니다.`,
                 })
               );

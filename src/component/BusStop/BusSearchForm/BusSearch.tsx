@@ -4,7 +4,7 @@ import { useSetRecoilState } from "recoil";
 import { selectedBusState } from "../../../store/bus-stop-alarm";
 import BusRouteList from "./BusRouteList";
 
-const BusSearch: React.FC = () => {
+function BusSearch (): JSX.Element {
   const inputRef = useRef<HTMLInputElement>(null);
   const setSelectedBus = useSetRecoilState(selectedBusState);
   const [inputBusNumber, setInputBusNumber] = useState<string>("");
@@ -34,7 +34,7 @@ const BusSearch: React.FC = () => {
       <BusRouteList busNumber={inputBusNumber} />
     </div>
   );
-};
+}
 
 // const BusSubmitForm: React.FC<{
 //   submitHandler: (e: React.FormEvent<HTMLFormElement>) => {};
