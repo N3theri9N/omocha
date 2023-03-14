@@ -1,33 +1,41 @@
-import { BusStation, BusLocation, BusAPIPrefix } from "./model/BusStopDataTypes";
+import { BusStation, BusLocation, BusAPIPrefix } from "../model/BusStopDataTypes";
 import React, { Fragment, useState, useEffect, useCallback } from "react";
-import SelectedStations from "./SelectedStations";
-import xmlToJson from "../../util/xmlToJson";
+import xmlToJson from "../../../util/xmlToJson";
 import classes from "./BusStations.module.css";
 import Image from "next/image";
-// import { useRecoilValue, RecoilState} from "recoil";
+import { alarmBusStation, selectedBusState } from "../../../store/bus-stop-alarm";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
-const BusStations: React.FC<{
-  selectedRouteId: string;
-  selectedRouteName: string;
-}> = ({ selectedRouteId, selectedRouteName }) => {
+const BusStations = (): JSX.Element => {
   const [busLocationList, setBusLocationList] = useState<Array<BusLocation>>([]);
   const [busStationList, setBusStationList] = useState<Array<BusStation>>([]);
-  const [alarmStation, setAlarmStation] = useState<Map<string, BusStation>>(new Map<string, BusStation>());
-  
+  // const [alarmStation, setAlarmStation] = useState<Map<string, BusStation>>(new Map<string, BusStation>());
+
+  const selectedBus = useRecoilValue(selectedBusState);
+  const setAlarmStation = useSetRecoilState(alarmBusStation);
 
   useEffect(() => {
     let interval: NodeJS.Timer;
 
     const fetchBusStations = async () => {
-      const promise = await fetch(`${BusAPIPrefix}/getBusRouteStationList?serviceKey=${process.env.DATA_GO_KEY}&routeId=${selectedRouteId}`);
+      // console.log("BusStations API RUNNING");
+
+      // 바로 불러오기 : ETag 가 없어 캐싱이 되지 않는다.
+      const promise = await fetch(`${BusAPIPrefix}/getBusRouteStationList?serviceKey=${process.env.DATA_GO_KEY}&routeId=${selectedBus.routeId}`);
       const xmlString: string = await promise.text();
       let XmlNode: any = xmlToJson(new DOMParser().parseFromString(xmlString, "text/xml"));
       let result: Array<BusStation> = XmlNode.response.msgBody.busRouteStationList || [];
+
+      // Next API 로 호출하기 : ETag 로 캐싱이 일어난다.
+      // const promise = await fetch(`/api/busstop/route/${selectedBus.routeId}`);
+      // const result = await promise.json();
       setBusStationList(result);
     };
 
     const fetchBusLocation = async () => {
-      const promise = await fetch(`https://apis.data.go.kr/6410000/buslocationservice/getBusLocationList?serviceKey=${process.env.DATA_GO_KEY}&routeId=${selectedRouteId}`);
+      // console.log("BusLocation API RUNNING");
+
+      const promise = await fetch(`https://apis.data.go.kr/6410000/buslocationservice/getBusLocationList?serviceKey=${process.env.DATA_GO_KEY}&routeId=${selectedBus.routeId}`);
       const xmlString: string = await promise.text();
       let XmlNode: any = xmlToJson(new DOMParser().parseFromString(xmlString, "text/xml"));
       let result: Array<BusLocation> | BusLocation = XmlNode.response.msgBody?.busLocationList || [];
@@ -48,7 +56,7 @@ const BusStations: React.FC<{
       setBusLocationList(result);
     };
 
-    if (selectedRouteId) {
+    if (selectedBus.routeId) {
       fetchBusStations();
       fetchBusLocation();
       interval = setInterval(() => {
@@ -62,7 +70,7 @@ const BusStations: React.FC<{
     return () => {
       clearInterval(interval);
     };
-  }, [selectedRouteId]);
+  }, [selectedBus.routeId]);
 
   let busLocationObject = new Array(busStationList.length);
   busLocationList.forEach((loc) => {
@@ -71,19 +79,12 @@ const BusStations: React.FC<{
   });
 
   const addStationHandler = (station: BusStation): void => {
-    const key = `${selectedRouteId}_${station.stationId}`;
+    const key = `${selectedBus.routeId}_${station.stationId}`;
     setAlarmStation((prev) => {
       prev.set(key, station);
       return new Map(prev);
     });
   };
-
-  const removeStationHandler = useCallback((key: string): void => {
-    setAlarmStation((prev) => {
-      prev.delete(key);
-      return new Map(prev);
-    });
-  }, []);
 
   return (
     <>
@@ -94,7 +95,7 @@ const BusStations: React.FC<{
               const busLocation = busLocationObject[idx];
               return (
                 <Fragment key={info.stationSeq}>
-                  <tr className={classes.busStationRow} key={info.stationSeq} onClick={() => addStationHandler({ ...info, routeName: selectedRouteName })}>
+                  <tr className={classes.busStationRow} key={info.stationSeq} onClick={() => addStationHandler({ ...info, routeName: selectedBus.busName })}>
                     <td className={classes.busStationName}>{info.stationName}</td>
                     <td className={classes.busLocation}>{busLocation} </td>
                     <td className={classes.busIcon}>
@@ -113,7 +114,6 @@ const BusStations: React.FC<{
           </tbody>
         </table>
       </div>
-      <SelectedStations alarmStation={alarmStation} removeStationHandler={removeStationHandler} />
     </>
   );
 };
