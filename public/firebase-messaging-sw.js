@@ -13,13 +13,16 @@ firebase.initializeApp({
 
 const messaging = firebase.messaging();
 
-messaging.onBackgroundMessage(function(payload) {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  const {title, body} = payload.notification;
-  
+messaging.onBackgroundMessage(function (payload) {
+  // console.log("[firebase-messaging-sw.js] Received background message ", payload);
+  const { title, body } = payload.notification;
+
   const options = {
     body,
-    icon: '/favicon/facivon-96x96.png'
+    icon: "/favicon/facivon-96x96.png",
+    badge: "/favicon/facivon-96x96.png",
+    vibrate: [300, 100, 300],
+    tag: "BusStopWatch",
   };
 
   return self.registration.showNotification(title, options);
