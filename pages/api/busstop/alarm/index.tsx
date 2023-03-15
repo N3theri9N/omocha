@@ -16,31 +16,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     case "POST": {
       // console.log(req.body);
       const { token, message } = JSON.parse(req.body);
-      // console.log(token,message);
       const payload = {
         notification: {
           title: "BusStopAlarm",
           body: message,
-          sound: "default",
-          color: "#008080",
-          icon: iconUrl,
         },
-        // android: {
-        //   notification: {
-        //     imageUrl: iconUrl,
-        //     color: "#008080",
-        //   },
-        // },
-        // webpush: {
-        //   fcm_options : {
-        //     link
-        //   },
-        //   headers: {
-        //     image: iconUrl,
-        //   },
-        // },
       };
-      await admin.messaging().sendToDevice(token, payload);
+      const response = await admin.messaging().sendToDevice(token, payload);
+      res.status(200).send("alarm was sent");
     }
   }
 }

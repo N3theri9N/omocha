@@ -95,7 +95,6 @@ function SelectedStations ({deviceToken} : SelectedStationsProps ) :JSX.Element 
           )}
         </div>
       )}
-      <div>DID : {deviceToken}</div>
     </>
   );
 };
