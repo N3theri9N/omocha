@@ -6,11 +6,11 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
 import { useEffect, useState } from "react";
 
 // TODO : 환경변수로 변경.
-const firebaseApp: FirebaseApp = initializeApp(JSON.parse(process.env.FIREBASE_APP_OBJ || '{}'));
+const firebaseApp: FirebaseApp = initializeApp(JSON.parse(process.env.FIREBASE_APP_OBJ || "{}"));
 
-function BusStopApp ({ routeId = "" }): JSX.Element {
-
+function BusStopApp({ routeId = "" }): JSX.Element {
   const [deviceToken, setDeviceToken] = useState<string>("");
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const messaging = getMessaging(firebaseApp);
@@ -25,13 +25,19 @@ function BusStopApp ({ routeId = "" }): JSX.Element {
         .catch((err) => {
           console.log("error occured");
         });
-      onMessage(messaging, (payload) => {
-        // console.log("RECEIVED", payload);
-        const title = "BusStopAlarm";
+      onMessage(messaging, async (payload) => {
+        const reg = await navigator.serviceWorker.register("/busstop-service-worker.js");
+
+        const title = "BusStopWatch";
+        const text = payload?.notification?.body || "BLANK";
         const options = {
-          body: payload?.notification?.body,
+          body: text,
+          data: {
+            createdAt: new Date(Date.now()).toString(),
+            message: text,
+          },
         };
-        const notification = new Notification(title, options);
+        reg.showNotification(title, options);
       });
     }
   }, []);
@@ -41,6 +47,6 @@ function BusStopApp ({ routeId = "" }): JSX.Element {
       <BusStopLayout routeId={routeId} deviceToken={deviceToken} />
     </RecoilRoot>
   );
-};
+}
 
 export default BusStopApp;
