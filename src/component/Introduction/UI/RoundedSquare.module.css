@@ -1,0 +1,8 @@
+.roundedSquare {
+  padding: 25px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  border-style: solid;
+  border-width: 1px;
+}
