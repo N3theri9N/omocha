@@ -1,0 +1,24 @@
+.headline {
+  margin-bottom: 25px;
+}
+.mainInfo tr {
+  margin-top:10px;
+  height : 25px;
+}
+.mainInfo tr * {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+.mainInfo .icon {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+.title {
+  text-align : left;
+}
+
+.link {
+  text-decoration: underline;
+  color: gray;
+}
