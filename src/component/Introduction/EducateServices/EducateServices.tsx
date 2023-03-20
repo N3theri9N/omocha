@@ -9,10 +9,10 @@ const EducateServices = (): JSX.Element => {
         const isEnd = idx === ESDataList.length - 1;
         const styleBody = isEnd ? {} : { borderBottom: "solid 1px rgba(128, 128, 128, 0.5)" }
         return (
-          <div style={ styleBody }>
+          <div style={ styleBody } key={idx}>
             <TitleAndPeriod title={data.title} period={data.period} />
             <ul>
-              {data.info.map(i => <li>{i}</li>)}
+              {data.info.map((v,i) => <li key={i}>{v}</li>)}
             </ul>
           </div>
         );

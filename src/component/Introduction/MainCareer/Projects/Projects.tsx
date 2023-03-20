@@ -28,8 +28,8 @@ const Projects = ({ styleColor }: propsType): JSX.Element => {
                 <b>역할 및 기여</b> :
               </p>
               <ul>
-                {item.role.map((rol) => (
-                  <li>{rol}</li>
+                {item.role.map((rol, idx) => (
+                  <li key={idx}>{rol}</li>
                 ))}
               </ul>
               {item?.contribute && (

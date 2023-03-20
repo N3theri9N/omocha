@@ -34,8 +34,8 @@ const SideWorks = (): JSX.Element => {
                 <b>주요 과제</b> :
               </p>
               <ul>
-                {tasks.map((rol) => (
-                  <li>{rol}</li>
+                {tasks.map((rol, idx) => (
+                  <li key={idx}>{rol}</li>
                 ))}
               </ul>
               <p>
