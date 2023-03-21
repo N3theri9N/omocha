@@ -12,8 +12,8 @@ export const sideworkItems: Array<SideworkItemType> = [
   {
     title: "버스 스톱 워치 ( alpha )",
     period: "2023.02.22 ~ 2023.03.16",
-    gitUrl: "https://github.com/N3theri9N/omocha",
-    productionUrl: "https://github.com/N3theri9N/omocha/blob/main/src/BusStopApp.tsx",
+    gitUrl: "https://github.com/N3theri9N/omocha/blob/main/src/BusStopApp.tsx",
+    productionUrl: "https://omocha-nine.vercel.app/busstop/",
     usedStack: "NextJS, TypeScript, Recoil, FCM, WPA",
     tasks: [
       "지정한 버스가 원하는 정류장에 도착하기 5분 이내면 알림을 전송하는 프로젝트입니다.",
