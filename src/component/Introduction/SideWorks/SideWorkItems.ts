@@ -13,7 +13,7 @@ export const sideworkItems: Array<SideworkItemType> = [
     title: "버스 스톱 워치 ( alpha )",
     period: "2023.02.22 ~ 2023.03.16",
     gitUrl: "https://github.com/N3theri9N/omocha",
-    productionUrl: "https://omocha-nine.vercel.app/busstop",
+    productionUrl: "https://github.com/N3theri9N/omocha/blob/main/src/BusStopApp.tsx",
     usedStack: "NextJS, TypeScript, Recoil, FCM, WPA",
     tasks: [
       "지정한 버스가 원하는 정류장에 도착하기 5분 이내면 알림을 전송하는 프로젝트입니다.",
@@ -29,7 +29,7 @@ export const sideworkItems: Array<SideworkItemType> = [
   {
     title: "데일리 스도쿠",
     period: "2022.11.24 ~ 2023.01.03",
-    gitUrl: "https://github.com/N3theri9N/omocha",
+    gitUrl: "https://github.com/N3theri9N/omocha/blob/main/src/SudokuApp.tsx",
     productionUrl: "https://omocha-nine.vercel.app/sudoku/daily/",
     usedStack: "NextJS, TypeScript, react-query, firebase Database",
     tasks: [
