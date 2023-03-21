@@ -1,6 +1,6 @@
-import Introduction from "../../src/Introduction"
+import IntroductionApp from "../../src/IntroductionApp"
 
 const index:React.FC = () => {
-  return (<Introduction />)
+  return (<IntroductionApp />)
 }
 export default index;

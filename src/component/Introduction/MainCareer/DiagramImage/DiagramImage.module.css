@@ -1,0 +1,6 @@
+.imageLayout { 
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2.14/1;
+  padding: 5px;
+}
