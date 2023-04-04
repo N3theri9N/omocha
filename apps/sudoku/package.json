@@ -7,5 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^4.19.1",
+    "react-query": "^3.39.2",
+    "sudoku-gen": "^1.0.0",
+    "@types/crypto-js": "^4.1.1",
+    "crypto-js": "^4.1.1",
+    "firebase": "^9.17.1"
   }
 }

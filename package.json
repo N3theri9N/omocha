@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "workspaces": [
-    "apps/*"
+    "apps/*",
+    "packages/**"
   ],
   "scripts": {
     "build": "turbo run build",
@@ -14,12 +15,15 @@
   "devDependencies": {
     "eslint-config-custom": "*",
     "prettier": "latest",
-    "turbo": "latest",
-    "next": "^13.0.6"
+    "turbo": "latest"
   },
   "engines": {
     "node": ">=14.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "18.2.0",
+    "next": "^13.0.6"
+  },
   "packageManager": "yarn@1.22.19"
 }
