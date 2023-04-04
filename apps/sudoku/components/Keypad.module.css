@@ -1,0 +1,74 @@
+.head > * {
+  flex: 1 1 auto;
+}
+
+.keypadSection {
+  position: fixed;
+  padding-top: 10px;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #c41374;
+  color: white;
+}
+
+.keypadSection .head {
+  display: flex;
+  flex-direction: row;
+}
+
+.keypadSection .close {
+  align-items: flex-end;
+  max-width: 30px;
+  max-height: 30px;
+  border: solid 0px;
+  background-color: #c41374;
+  color: white;
+}
+.keypadSection .close > img {
+  max-width: 30px;
+  max-height: 30px;
+  color: white;
+}
+
+.keypad {
+  width: 95%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  column-gap: 5px;
+  row-gap: 5px;
+}
+.keypad button {
+  aspect-ratio: 1 / 1;
+  border-radius: 5px;
+  border: solid 3px #fff;
+  background-color: #c41374;
+  color: white;
+  font-size: 19px;
+}
+
+.keypad button:hover {
+  background-color: #fff;
+  color: #c41374;
+}
+
+@media (max-width: 600px) {
+  .keypad {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    max-height: 120px;
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 600px) {
+  .keypad {
+    max-height: 120px;
+    max-width: 600px;
+  }
+}

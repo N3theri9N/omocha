@@ -1,0 +1,48 @@
+.sudokuBoard {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  column-gap: 1px;
+  row-gap: 1px;
+  
+  padding-bottom: 50px;
+  border-bottom: solid 2px #c41374;
+}
+
+.sudokuBoard > button {
+  font-size: 19px;
+  background-color: #fff;
+  border: solid 2px #d1d0d0;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+.sudokuBoard > button:nth-child(3n) {
+  border-right: solid 2px #c41374;
+}
+.sudokuBoard > button:nth-child(3n + 1) {
+  border-left: solid 2px #c41374;
+}
+.sudokuBoard > button:nth-child(n + 0):nth-child(-n + 9),
+.sudokuBoard > button:nth-child(n + 28):nth-child(-n + 36),
+.sudokuBoard > button:nth-child(n + 55):nth-child(-n + 63) {
+  border-top: solid 2px #c41374;
+}
+.sudokuBoard > button:nth-child(n + 19):nth-child(-n + 27),
+.sudokuBoard > button:nth-child(n + 46):nth-child(-n + 54),
+.sudokuBoard > button:nth-child(n + 73):nth-child(-n + 82) {
+  border-bottom: solid 2px #c41374;
+}
+
+.sudokuBoard > button.fixed {
+  background-color: #fff;
+  color: #000;
+}
+
+
+@media (min-width: 600px) {
+  .sudokuBoard {
+    max-width: 600px;
+  }
+}

@@ -9,8 +9,9 @@
 /coverage
 
 # next.js
-/.next/
-/out/
+.next/
+out/
+build
 
 # production
 /build
@@ -42,3 +43,6 @@ next-env.d.ts
 
 #httpsCert
 localhost.*
+
+#turbo
+.turbo

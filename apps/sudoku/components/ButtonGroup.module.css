@@ -1,0 +1,92 @@
+.modalBack {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+}
+.modal {
+  position: relative;
+  top: 100px;
+  padding-top : 100px;
+  background-color: white;
+  max-width: 600px;
+  height: 50vh;
+  margin: auto;
+}
+@media (min-width: 600px) {
+  .modal {
+    padding: 50px;
+  }
+}
+
+.buttonGroup {
+  margin: auto;
+  padding-top: 20px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.buttonGroup div {
+  margin: 10px;
+}
+
+.buttonGroup .inputGroup {
+  width: 100%;
+}
+
+.inputGroup .input {
+  width: 95%;
+  font-size: 19px;
+  max-width: 550px;
+}
+
+.inputGroup .lengthLabel {
+  font-size: 11px;
+  color: gray;
+}
+
+.buttonGroup button {
+  width: 100px;
+  height: 50px;
+  color: #fff;
+  font-size: 19px;
+  background-color: #279b9b;
+  border: solid 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.buttonGroup button:last-child {
+  margin-right: 0px;
+}
+
+.buttonGroup button:hover {
+  background-color: rgba(0, 140, 255);
+}
+
+.copyLabel {
+  font-size: 15px;
+  padding: 5px;
+  font-weight: 400;
+  background-color: lightgreen;
+  opacity: 1;
+  animation: fadein 4s linear;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

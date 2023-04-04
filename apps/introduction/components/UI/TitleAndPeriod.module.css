@@ -1,0 +1,16 @@
+.item {
+  align-items: center;
+}
+
+.label {
+  color: gray;
+  line-height: 2;
+}
+
+
+@media (min-width: 600px) {
+  .item {
+    display: flex;
+    justify-content: space-between;
+  }
+}

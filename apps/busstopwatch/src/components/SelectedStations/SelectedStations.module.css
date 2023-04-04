@@ -1,0 +1,51 @@
+.bottomLayout {
+  position:fixed;
+  z-index: 100;
+  color: white;
+  background-color: teal;
+  
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  
+  width:100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-width: 600px;
+  bottom : 0;
+}
+.bottomLabel {
+  width: 100%; 
+  border-bottom: solid 1px white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding:15px;
+  background-color: teal;
+  cursor: pointer;
+}
+
+.bottomContent {
+  overflow:auto;
+  max-height: 200px;
+  scrollbar-color: white white;
+}
+
+.selectedRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 500; 
+  padding: 10px;
+  /* margin:auto; */
+  border-bottom: solid 1px white;
+}
+.selectedRow button {
+  background-color: teal;
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  width:26px;
+  height:26px;
+  border-radius: 13px;
+  cursor: pointer;
+  border: solid 2px white;
+}

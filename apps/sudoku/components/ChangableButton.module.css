@@ -1,0 +1,19 @@
+.changable {
+  color: #279b9b;
+}
+
+.changable:hover {
+  background-color: rgba(0, 140, 255, 0.39);
+  cursor: pointer;
+}
+
+.changable.selected {
+  background-color: rgba(0, 140, 255, 0.39); 
+  color: rgb(0, 140, 255);
+}
+
+.changable.wrong {
+  color: red;
+  text-decoration: underline;
+}
+

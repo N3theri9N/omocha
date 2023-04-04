@@ -1,0 +1,1 @@
+export const FIREBASE_DOMAIN:string = "https://react-post-de8f7-default-rtdb.firebaseio.com";

@@ -11,41 +11,42 @@ const firebaseApp: FirebaseApp = initializeApp(JSON.parse(process.env.FIREBASE_A
 function BusStopApp({ routeId = "" }): JSX.Element {
   const [deviceToken, setDeviceToken] = useState<string>("");
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const messaging = getMessaging(firebaseApp);
-      getToken(messaging, { vapidKey: process.env.BUSSTOP_VAPID_KEY })
-        .then((currentToken) => {
-          if (currentToken) {
-            setDeviceToken(currentToken);
-          } else {
-            console.log("NO TOKEN AVAILABLE");
-          }
-        })
-        .catch((err) => {
-          console.log("error occured");
-        });
-      onMessage(messaging, async (payload) => {
-        const reg = await navigator.serviceWorker.register("/busstop-service-worker.js");
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     const messaging = getMessaging(firebaseApp);
+  //     getToken(messaging, { vapidKey: process.env.BUSSTOP_VAPID_KEY })
+  //       .then((currentToken) => {
+  //         if (currentToken) {
+  //           setDeviceToken(currentToken);
+  //         } else {
+  //           console.log("NO TOKEN AVAILABLE");
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log("error occured");
+  //       });
+  //     onMessage(messaging, async (payload) => {
+  //       const reg = await navigator.serviceWorker.register("/busstop-service-worker.js");
 
-        const title = "BusStopWatch";
-        const text = payload?.notification?.body || "BLANK";
-        const options = {
-          body: text,
-          data: {
-            createdAt: new Date(Date.now()).toString(),
-            message: text,
-          },
-        };
-        reg.showNotification(title, options);
-      });
-    }
-  }, []);
+  //       const title = "BusStopWatch";
+  //       const text = payload?.notification?.body || "BLANK";
+  //       const options = {
+  //         body: text,
+  //         data: {
+  //           createdAt: new Date(Date.now()).toString(),
+  //           message: text,
+  //         },
+  //       };
+  //       reg.showNotification(title, options);
+  //     });
+  //   }
+  // }, []);
 
   return (
-    <RecoilRoot>
-      <BusStopLayout routeId={routeId} deviceToken={deviceToken} />
-    </RecoilRoot>
+    <></>
+    // <RecoilRoot>
+    //   <BusStopLayout routeId={routeId} deviceToken={deviceToken} />
+    // </RecoilRoot>
   );
 }
 
